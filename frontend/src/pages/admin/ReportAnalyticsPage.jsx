@@ -5,16 +5,12 @@ import {
   ButtonGroup,
   Card,
   Col,
-  Container,
-  Nav,
-  Navbar,
   Row,
   Spinner,
-  Dropdown,
 } from "react-bootstrap";
-import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
 import { apiClient as api } from "../../services/api";
+import AdminLayout from "../../components/admin/AdminLayout";
 
 export function meta() {
   return [

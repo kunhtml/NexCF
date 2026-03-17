@@ -1,24 +1,21 @@
 import { useEffect, useState } from "react";
 import {
-  Container,
   Row,
   Col,
   Card,
   Button,
-  Navbar,
-  Nav,
   Form,
   Alert,
   Spinner,
   Badge,
 } from "react-bootstrap";
-import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
 import {
   getMeApi,
   updateProfileApi,
   changePasswordApi,
 } from "../../services/api";
+import AdminLayout from "../../components/admin/AdminLayout";
 
 export function meta() {
   return [{ title: "Hồ sơ Admin | Nexus Admin" }];
@@ -40,8 +37,7 @@ const MEMBERSHIP_MAP = {
 };
 
 export default function AdminProfile() {
-  const { user: authUser, logout, isAuthenticated } = useAuth();
-  const navigate = useNavigate();
+  const { user: authUser, isAuthenticated } = useAuth();
 
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -150,9 +146,7 @@ export default function AdminProfile() {
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100 bg-light">
-      {/* Navbar */}
-      <Navbar bg="dark" variant="dark" expand="lg" className="shadow-sm">
+    <AdminLayout>
         <Container>
           <Navbar.Brand as={Link} to="/" className="fw-bold text-white">
             <i className="bi bi-cup-hot-fill me-2 text-warning"></i>

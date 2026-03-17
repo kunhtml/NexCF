@@ -4,20 +4,16 @@ import {
   Button,
   Card,
   Col,
-  Container,
   Form,
   Modal,
-  Nav,
-  Navbar,
   Row,
   Table,
   Alert,
   Spinner,
-  Dropdown,
 } from "react-bootstrap";
-import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
 import { apiClient as api } from "../../services/api";
+import AdminLayout from "../../components/admin/AdminLayout";
 
 export function meta() {
   return [
@@ -27,8 +23,7 @@ export function meta() {
 }
 
 export default function AdminPage() {
-  const { isAuthenticated, user, logout } = useAuth();
-  const navigate = useNavigate();
+  const { isAuthenticated, user } = useAuth();
 
   const [menuItems, setMenuItems] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -73,10 +68,7 @@ export default function AdminPage() {
     }
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate("/");
-  };
+
 
   const resetForm = () => {
     setFormData({
@@ -165,63 +157,7 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100 bg-light">
-      {/* Navbar */}
-      <Navbar bg="dark" variant="dark" expand="lg" className="shadow-sm">
-        <Container>
-          <Navbar.Brand as={Link} to="/" className="fw-bold text-white">
-            <i className="bi bi-cup-hot-fill me-2 text-warning"></i>
-            NEXUS ADMIN
-          </Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse>
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="/admin" className="text-light">
-                <i className="bi bi-list-ul me-1"></i>
-                Quản lý Menu
-              </Nav.Link>
-              <Nav.Link as={Link} to="/admin/tables" className="text-light">
-                <i className="bi bi-table me-1"></i>
-                Quản lý Bàn
-              </Nav.Link>
-              <Nav.Link as={Link} to="/admin/users" className="text-light">
-                <i className="bi bi-people me-1"></i>
-                Quản lý User
-              </Nav.Link>
-              <Nav.Link as={Link} to="/admin/reports" className="text-light">
-                <i className="bi bi-bar-chart-line me-1"></i>
-                Report & Analytics
-              </Nav.Link>
-            </Nav>
-            <div className="ms-auto d-flex align-items-center gap-3 mt-3 mt-lg-0">
-              <Dropdown align="end">
-                <Dropdown.Toggle
-                  variant="outline-light"
-                  size="sm"
-                  className="d-flex align-items-center gap-2"
-                >
-                  <i className="bi bi-person-circle"></i>
-                  <span>{user?.fullName || user?.email || "Admin"}</span>
-                </Dropdown.Toggle>
-                <Dropdown.Menu className="shadow">
-                  <Dropdown.Item as={Link} to="/admin/profile">
-                    <i className="bi bi-person me-2"></i>
-                    Hồ sơ
-                  </Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item onClick={handleLogout} className="text-danger">
-                    <i className="bi bi-box-arrow-right me-2"></i>
-                    Đăng xuất
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
-      {/* Main */}
-      <Container className="py-5">
+    <AdminLayout>
         <Row className="mb-4 align-items-center">
           <Col>
             <h2 className="fw-bold mb-1">
@@ -340,7 +276,6 @@ export default function AdminPage() {
             )}
           </Card.Body>
         </Card>
-      </Container>
 
       {/* Add Modal */}
       <Modal show={showAddModal} onHide={() => setShowAddModal(false)} centered>
@@ -599,6 +534,6 @@ export default function AdminPage() {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </AdminLayout>
   );
 }

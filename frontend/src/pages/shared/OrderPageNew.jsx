@@ -34,7 +34,7 @@ const menuData = {
       name: "Cà phê sữa đá",
       description: "Cà phê phin truyền thống pha sữa đặc, đá viên",
       price: 30000,
-      icon: "☕",
+      icon: "bi-cup-hot",
       color: "rgba(99, 102, 241, 0.1)",
       category: "Đồ uống",
       popular: true,
@@ -44,7 +44,7 @@ const menuData = {
       name: "Trà đào cam sả",
       description: "Trà thơm hoa quyến đào tươi, cam vả sả",
       price: 35000,
-      icon: "🧡",
+      icon: "bi-cup-straw",
       color: "rgba(251, 191, 36, 0.1)",
       category: "Đồ uống",
       popular: false,
@@ -54,7 +54,7 @@ const menuData = {
       name: "Latte",
       description: "Espresso đậm đà kết hợp sữa tươi béo ngậy",
       price: 40000,
-      icon: "🥛",
+      icon: "bi-cup",
       color: "rgba(156, 163, 175, 0.1)",
       category: "Đồ uống",
       popular: false,
@@ -64,7 +64,7 @@ const menuData = {
       name: "Americano",
       description: "Espresso pha nước, vị đắm thanh",
       price: 35000,
-      icon: "☕",
+      icon: "bi-cup-hot",
       color: "rgba(99, 102, 241, 0.1)",
       category: "Đồ uống",
       popular: false,
@@ -74,7 +74,7 @@ const menuData = {
       name: "Matcha Latte",
       description: "Bột trà xanh Nhật Bản chính hiệu kết hợp sữa tươi",
       price: 45000,
-      icon: "🍵",
+      icon: "bi-cup-hot",
       color: "rgba(34, 197, 94, 0.1)",
       category: "Đồ uống",
       popular: false,
@@ -84,7 +84,7 @@ const menuData = {
       name: "Chocolate nóng",
       description: "Socola Bỉ đậm đà với whipped cream",
       price: 42000,
-      icon: "🍫",
+      icon: "bi-cup-hot",
       color: "rgba(120, 53, 15, 0.1)",
       category: "Đồ uống",
       popular: false,
@@ -96,7 +96,7 @@ const menuData = {
       name: "Croissant bơ Pháp",
       description: "Bánh sừng bò bơ Pháp nướng giòn thơm",
       price: 25000,
-      icon: "🥐",
+      icon: "bi-bread-slice",
       color: "rgba(251, 191, 36, 0.1)",
       category: "Đồ ăn",
       popular: true,
@@ -106,7 +106,7 @@ const menuData = {
       name: "Bánh mì sandwich",
       description: "Bánh mì Việt Nam với jambon, pate, rau củ",
       price: 35000,
-      icon: "🥪",
+      icon: "bi-menu-button-wide",
       color: "rgba(34, 197, 94, 0.1)",
       category: "Đồ ăn",
       popular: false,
@@ -116,7 +116,7 @@ const menuData = {
       name: "Salad trái cây",
       description: "Mix trái cây tươi ngon với sốt yogurt",
       price: 30000,
-      icon: "🥗",
+      icon: "bi-egg-fried",
       color: "rgba(34, 197, 94, 0.1)",
       category: "Đồ ăn",
       popular: false,
@@ -126,7 +126,7 @@ const menuData = {
       name: "Cookies tự làm",
       description: "Bánh quy bơ chocolate chips nướng tươi",
       price: 20000,
-      icon: "🍪",
+      icon: "bi-circle-fill",
       color: "rgba(251, 191, 36, 0.1)",
       category: "Đồ ăn",
       popular: false,
@@ -138,7 +138,7 @@ const menuData = {
       name: "In tài liệu (10 trang)",
       description: "In đen trắng hoặc màu, A4",
       price: 10000,
-      icon: "🖨️",
+      icon: "bi-printer",
       color: "rgba(59, 130, 246, 0.1)",
       category: "In ấn",
       popular: false,
@@ -148,7 +148,7 @@ const menuData = {
       name: "Photocopy (10 trang)",
       description: "Photocopy tài liệu, giấy tờ nhanh chóng",
       price: 5000,
-      icon: "📄",
+      icon: "bi-files",
       color: "rgba(59, 130, 246, 0.1)",
       category: "In ấn",
       popular: false,
@@ -159,7 +159,7 @@ const menuData = {
       description: "Type-C 65W, Magsafe, USB-C PD",
       price: 20000,
       unit: "/h",
-      icon: "🔌",
+      icon: "bi-plug",
       color: "rgba(34, 197, 94, 0.1)",
       category: "Thiết bị",
       popular: false,
@@ -170,7 +170,7 @@ const menuData = {
       description: "Full HD, kết nối HDMI/Wireless",
       price: 50000,
       unit: "/h",
-      icon: "📽️",
+      icon: "bi-camera-video",
       color: "rgba(139, 92, 246, 0.1)",
       category: "Thiết bị",
       popular: false,
@@ -181,7 +181,7 @@ const menuData = {
       description: "Sony WH-1000XM4, chống ồn cao cấp",
       price: 30000,
       unit: "/h",
-      icon: "🎧",
+      icon: "bi-headphones",
       color: "rgba(139, 92, 246, 0.1)",
       category: "Thiết bị",
       popular: false,
@@ -192,7 +192,7 @@ const menuData = {
       description: "USB-C Hub với HDMI, USB 3.0, SD card",
       price: 15000,
       unit: "/h",
-      icon: "🔌",
+      icon: "bi-plug",
       color: "rgba(34, 197, 94, 0.1)",
       category: "Thiết bị",
       popular: false,
@@ -202,12 +202,12 @@ const menuData = {
 
 const categories = [
   { id: "all", label: "Tất cả", icon: "", count: 0 },
-  { id: "drinks", label: "Đồ uống", icon: "☕", count: menuData.drinks.length },
-  { id: "food", label: "Đồ ăn", icon: "🍰", count: menuData.food.length },
+  { id: "drinks", label: "Đồ uống", icon: "bi-cup-hot", count: menuData.drinks.length },
+  { id: "food", label: "Đồ ăn", icon: "bi-bread-slice", count: menuData.food.length },
   {
     id: "services",
     label: "Dịch vụ",
-    icon: "⚙️",
+    icon: "bi-tools",
     count: menuData.services.length,
   },
 ];
@@ -400,7 +400,7 @@ export default function MenuPage() {
                   onClick={() => setSelectedCategory(category.id)}
                 >
                   {category.icon && (
-                    <span className="me-2">{category.icon}</span>
+                    <i className={`${category.icon} me-2`}></i>
                   )}
                   {category.label}
                   <Badge
@@ -457,7 +457,7 @@ export default function MenuPage() {
                       className="menu-icon mb-3"
                       style={{ fontSize: "4rem" }}
                     >
-                      {item.icon}
+                      <i className={item.icon}></i>
                     </div>
                   </div>
 
@@ -600,7 +600,7 @@ export default function MenuPage() {
                   >
                     <div className="d-flex align-items-center gap-3">
                       <div className="menu-icon" style={{ fontSize: "2rem" }}>
-                        {item.icon}
+                        <i className={item.icon}></i>
                       </div>
                       <div>
                         <h6 className="mb-1">{item.name}</h6>

@@ -40,7 +40,7 @@ const workspaceTypes = [
     price: 25000,
     capacity: "1 chỗ",
     features: ["0 cầm", "Wi-Fi 5G", "Đèn bàn"],
-    icon: "💺",
+    icon: "bi-person-workspace",
     color: "rgba(99, 102, 241, 0.1)",
     borderColor: "#6366f1",
     popular: false,
@@ -52,7 +52,7 @@ const workspaceTypes = [
     price: 40000,
     capacity: "4 chỗ",
     features: ["4 ổ cắm", "Bảng trắng", "Wi-Fi"],
-    icon: "👥",
+    icon: "bi-people-fill",
     color: "rgba(251, 191, 36, 0.1)",
     borderColor: "#fbbf24",
     popular: true,
@@ -64,7 +64,7 @@ const workspaceTypes = [
     price: 55000,
     capacity: "6 chỗ",
     features: ["6 ổ cắm", "Màn hình", "Bảng trắng"],
-    icon: "👥",
+    icon: "bi-people-fill",
     color: "rgba(34, 197, 94, 0.1)",
     borderColor: "#22c55e",
     popular: false,
@@ -76,7 +76,7 @@ const workspaceTypes = [
     price: 120000,
     capacity: "8 chỗ",
     features: ["Máy chiếu", "AC", "Cách âm"],
-    icon: "📊",
+    icon: "bi-easel",
     color: "rgba(59, 130, 246, 0.1)",
     borderColor: "#3b82f6",
     popular: false,
@@ -88,7 +88,7 @@ const workspaceTypes = [
     price: 200000,
     capacity: "10 chỗ",
     features: ["VIP", "Minibar", "Phục vụ riêng"],
-    icon: "👑",
+    icon: "bi-gem",
     color: "rgba(139, 92, 246, 0.1)",
     borderColor: "#8b5cf6",
     popular: false,
@@ -329,7 +329,7 @@ export default function BookingPage() {
                               className="workspace-icon"
                               style={{ fontSize: "2.5rem" }}
                             >
-                              {type.icon}
+                              <i className={type.icon}></i>
                             </div>
                             <div className="flex-grow-1">
                               <div className="d-flex align-items-center gap-2 mb-2">

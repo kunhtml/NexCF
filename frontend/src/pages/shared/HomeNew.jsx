@@ -32,7 +32,7 @@ const workspaceOptions = [
     price: 25000,
     capacity: "1 chỗ",
     features: ["0 cầm", "Wi-Fi 5G"],
-    icon: "💺",
+    icon: "bi-person-workspace",
     color: "rgba(99, 102, 241, 0.1)",
     badge: "Ghế cá nhân",
     status: "Trống",
@@ -45,7 +45,7 @@ const workspaceOptions = [
     price: 40000,
     capacity: "4 chỗ",
     features: ["4 ổ cắm", "Bảng trắng"],
-    icon: "👥",
+    icon: "bi-people-fill",
     color: "rgba(251, 191, 36, 0.1)",
     badge: "Bàn nhóm",
     status: "Trống",
@@ -58,7 +58,7 @@ const workspaceOptions = [
     price: 55000,
     capacity: "6 chỗ",
     features: ["6 ổ cắm", "Màn hình"],
-    icon: "👥",
+    icon: "bi-people-fill",
     color: "rgba(34, 197, 94, 0.1)",
     badge: "Bàn nhóm",
     status: "Còn lại 1",
@@ -71,7 +71,7 @@ const workspaceOptions = [
     price: 120000,
     capacity: "8 chỗ",
     features: ["Máy chiếu", "AC"],
-    icon: "📊",
+    icon: "bi-easel",
     color: "rgba(59, 130, 246, 0.1)",
     badge: "Phòng họp",
     status: "Hết chỗ",
@@ -84,7 +84,7 @@ const workspaceOptions = [
     price: null,
     capacity: "10 chỗ",
     features: ["VIP", "Minibar"],
-    icon: "👑",
+    icon: "bi-gem",
     color: "rgba(139, 92, 246, 0.1)",
     badge: "VIP",
     status: "Trống",
@@ -107,7 +107,7 @@ const menuItems = [
     name: "Trà đào cam sả",
     description: "Trà thơm hoa quyến đào tươi, cam vả sả",
     price: 35000,
-    icon: "🧡",
+    icon: "bi-cup-straw",
     category: "drink",
     color: "rgba(251, 191, 36, 0.1)",
   },
@@ -116,7 +116,7 @@ const menuItems = [
     name: "Latte",
     description: "Espresso đậm đà kết hợp sữa tươi béo ngậy",
     price: 40000,
-    icon: "🥛",
+    icon: "bi-cup",
     category: "drink",
     color: "rgba(156, 163, 175, 0.1)",
   },
@@ -125,7 +125,7 @@ const menuItems = [
     name: "Americano",
     description: "Espresso pha nước, vị đắm thanh",
     price: 35000,
-    icon: "☕",
+    icon: "bi-cup-hot",
     category: "drink",
     color: "rgba(99, 102, 241, 0.1)",
   },
@@ -134,7 +134,7 @@ const menuItems = [
     name: "Croissant bơ Pháp",
     description: "Bánh sừng bò bơ Pháp nướng giòn thơm",
     price: 25000,
-    icon: "🥐",
+    icon: "bi-bread-slice",
     category: "food",
     color: "rgba(251, 191, 36, 0.1)",
   },
@@ -143,7 +143,7 @@ const menuItems = [
     name: "In tài liệu (10 trang)",
     description: "In đen trắng hoặc màu, A4",
     price: 10000,
-    icon: "🖨️",
+    icon: "bi-printer",
     category: "print",
     color: "rgba(59, 130, 246, 0.1)",
   },
@@ -152,7 +152,7 @@ const menuItems = [
     name: "Thuê sạc laptop",
     description: "Type-C 65W, Magsafe, USB-C PD",
     price: 20000,
-    icon: "🔌",
+    icon: "bi-plug",
     category: "equipment",
     color: "rgba(34, 197, 94, 0.1)",
   },
@@ -162,7 +162,7 @@ const menuItems = [
     description: "Full HD, kết nối HDMI/Wireless",
     price: 50000,
     unit: "/h",
-    icon: "📽️",
+    icon: "bi-camera-video",
     category: "equipment",
     color: "rgba(139, 92, 246, 0.1)",
   },
@@ -170,10 +170,10 @@ const menuItems = [
 
 const categories = [
   { id: "all", label: "Tất cả", icon: "" },
-  { id: "drink", label: "Đồ uống", icon: "☕" },
-  { id: "food", label: "Đồ ăn", icon: "🍰" },
-  { id: "print", label: "In ấn", icon: "📄" },
-  { id: "equipment", label: "Thiết bị", icon: "🔧" },
+  { id: "drink", label: "Đồ uống", icon: "bi-cup-hot" },
+  { id: "food", label: "Đồ ăn", icon: "bi-bread-slice" },
+  { id: "print", label: "In ấn", icon: "bi-printer" },
+  { id: "equipment", label: "Thiết bị", icon: "bi-tools" },
 ];
 
 export default function Home() {
@@ -316,7 +316,7 @@ export default function Home() {
                       className="workspace-icon mb-3"
                       style={{ fontSize: "3rem" }}
                     >
-                      💺
+                      <i className="bi bi-person-workspace"></i>
                     </div>
                     <p className="text-muted small mb-3">
                       Không gian yên tĩnh, 0 cầm riêng, đèn bàn,
@@ -378,7 +378,7 @@ export default function Home() {
                       className="workspace-icon mb-3"
                       style={{ fontSize: "3rem" }}
                     >
-                      {workspace.icon}
+                      <i className={workspace.icon}></i>
                     </div>
                   </div>
 
@@ -493,7 +493,7 @@ export default function Home() {
                       className="menu-icon mb-3 mt-3"
                       style={{ fontSize: "4rem" }}
                     >
-                      {item.icon}
+                      <i className={item.icon}></i>
                     </div>
 
                     <div className="price-badge position-absolute top-0 end-0 m-3">

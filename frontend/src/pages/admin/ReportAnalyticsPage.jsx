@@ -359,7 +359,7 @@ export default function ReportAnalyticsPage() {
       }));
     }
 
-    // 🚫 No fallback fake data - if no MongoDB data, show empty
+    // No fallback fake data - if no MongoDB data, show empty
     return [];
   }, [report, timeFilter]);
 

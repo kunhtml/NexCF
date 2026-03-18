@@ -317,7 +317,11 @@ export default function Home() {
                   slidesPerView="auto"
                   centeredSlides={true}
                   className="workspace-swiper"
-                  style={{ maxWidth: "400px", margin: "0 auto", height: "400px" }}
+                  style={{
+                    maxWidth: "400px",
+                    margin: "0 auto",
+                    height: "400px",
+                  }}
                 >
                   {workspaceOptions.map((workspace) => (
                     <SwiperSlide key={workspace.id} className="workspace-slide">
@@ -336,7 +340,10 @@ export default function Home() {
                             <Badge bg="success" className="px-3 py-2 fw-normal">
                               {workspace.badge}
                             </Badge>
-                            <Badge bg={workspace.statusColor} className="px-2 py-1">
+                            <Badge
+                              bg={workspace.statusColor}
+                              className="px-2 py-1"
+                            >
                               {workspace.status}
                             </Badge>
                           </div>
@@ -349,7 +356,9 @@ export default function Home() {
                           >
                             <i className={workspace.icon}></i>
                           </div>
-                          <h5 className="fw-bold mb-2 text-dark">{workspace.title}</h5>
+                          <h5 className="fw-bold mb-2 text-dark">
+                            {workspace.title}
+                          </h5>
                           <p className="text-muted small mb-3">
                             {workspace.description}
                           </p>

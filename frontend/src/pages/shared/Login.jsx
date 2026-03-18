@@ -89,10 +89,16 @@ export default function Login() {
             >
               <i className="bi bi-cup-hot-fill"></i>
             </div>
-            <h2 className="fw-bold mb-0" style={{ color: "#2b2b2b", fontSize: "1.5rem" }}>
+            <h2
+              className="fw-bold mb-0"
+              style={{ color: "#2b2b2b", fontSize: "1.5rem" }}
+            >
               Study<span style={{ color: "#a78bfa" }}>Space</span>
             </h2>
-            <p className="text-muted small mb-2" style={{ fontSize: "0.85rem" }}>
+            <p
+              className="text-muted small mb-2"
+              style={{ fontSize: "0.85rem" }}
+            >
               Coworking Space Management System
             </p>
             <Link
@@ -137,8 +143,13 @@ export default function Login() {
                   Tên đăng nhập
                 </Form.Label>
                 <InputGroup className="login-input-group">
-                  <InputGroup.Text style={{ background: "transparent", border: "none" }}>
-                    <i className="bi bi-person-fill" style={{ color: "#a0a0a0" }}></i>
+                  <InputGroup.Text
+                    style={{ background: "transparent", border: "none" }}
+                  >
+                    <i
+                      className="bi bi-person-fill"
+                      style={{ color: "#a0a0a0" }}
+                    ></i>
                   </InputGroup.Text>
                   <Form.Control
                     type="text"
@@ -164,8 +175,13 @@ export default function Login() {
                   Mật khẩu
                 </Form.Label>
                 <InputGroup className="login-input-group">
-                  <InputGroup.Text style={{ background: "transparent", border: "none" }}>
-                    <i className="bi bi-lock-fill" style={{ color: "#a0a0a0" }}></i>
+                  <InputGroup.Text
+                    style={{ background: "transparent", border: "none" }}
+                  >
+                    <i
+                      className="bi bi-lock-fill"
+                      style={{ color: "#a0a0a0" }}
+                    ></i>
                   </InputGroup.Text>
                   <Form.Control
                     type={showPassword ? "text" : "password"}
@@ -191,7 +207,9 @@ export default function Login() {
                     }}
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    <i className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}></i>
+                    <i
+                      className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}
+                    ></i>
                   </Button>
                 </InputGroup>
               </Form.Group>

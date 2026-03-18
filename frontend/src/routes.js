@@ -46,10 +46,7 @@ export default [
   route("admin-dashboard/spaces", "pages/admin/AdminTablesNew.jsx"),
   route("admin-dashboard/revenue", "pages/admin/AdminRevenuePage.jsx"),
   route("admin-dashboard/profile", "pages/admin/routes/AdminProfilePage.jsx"),
-  route(
-    "admin-dashboard/password",
-    "pages/admin/routes/AdminPasswordPage.jsx",
-  ),
+  route("admin-dashboard/password", "pages/admin/routes/AdminPasswordPage.jsx"),
 
   route("admin", "pages/shared/AdminToDashboard.jsx"),
 ];

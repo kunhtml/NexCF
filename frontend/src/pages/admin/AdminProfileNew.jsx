@@ -439,7 +439,12 @@ export default function AdminProfile() {
                     </div>
 
                     <div className="border-top pt-3">
-                      <Button variant="outline-warning" size="sm" className="w-100" disabled>
+                      <Button
+                        variant="outline-warning"
+                        size="sm"
+                        className="w-100"
+                        disabled
+                      >
                         <i className="bi bi-key me-2"></i>
                         Đổi mật khẩu ở biểu mẫu bên dưới
                       </Button>
@@ -538,10 +543,18 @@ export default function AdminProfile() {
                       </Row>
 
                       <div className="d-flex justify-content-end mt-3">
-                        <Button type="submit" variant="primary" disabled={passwordLoading}>
+                        <Button
+                          type="submit"
+                          variant="primary"
+                          disabled={passwordLoading}
+                        >
                           {passwordLoading ? (
                             <>
-                              <Spinner animation="border" size="sm" className="me-2" />
+                              <Spinner
+                                animation="border"
+                                size="sm"
+                                className="me-2"
+                              />
                               Đang cập nhật...
                             </>
                           ) : (

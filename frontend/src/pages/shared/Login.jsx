@@ -1,21 +1,16 @@
 import { useEffect, useState } from "react";
 import {
-  Container,
-  Row,
-  Col,
   Card,
   Form,
   Button,
   Alert,
   Spinner,
-  Navbar,
-  Nav,
+  InputGroup,
 } from "react-bootstrap";
 import { Link, useNavigate } from "react-router";
-import { animate, stagger } from "animejs";
+import { animate } from "animejs";
 import { loginApi } from "../../services/api";
 import { saveAuth } from "../../store/authSlice";
-import AuthNavActions from "../../components/common/AuthNavActions";
 
 export function meta() {
   return [
@@ -28,6 +23,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -40,22 +36,6 @@ export default function Login() {
       easing: "easeOutExpo",
       delay: 200,
     });
-
-    animate(".login-header-item", {
-      translateY: [20, 0],
-      opacity: [0, 1],
-      duration: 800,
-      easing: "easeOutExpo",
-      delay: stagger(150, { start: 500 }),
-    });
-
-    animate(".login-form-item", {
-      translateX: [-20, 0],
-      opacity: [0, 1],
-      duration: 800,
-      easing: "easeOutExpo",
-      delay: stagger(100, { start: 800 }),
-    });
   }, []);
 
   const handleSubmit = async (e) => {
@@ -64,7 +44,7 @@ export default function Login() {
     setSuccess("");
 
     if (!identifier.trim() || !password.trim()) {
-      setError("Vui lòng nhập đầy đủ email/số điện thoại và mật khẩu.");
+      setError("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.");
       return;
     }
 
@@ -90,211 +70,175 @@ export default function Login() {
   };
 
   return (
-    <div className="min-vh-100 bg-light d-flex flex-column">
-      {/* Header Navigation */}
-      <Navbar bg="white" expand="lg" className="py-3 shadow-sm border-0">
-        <Container>
-          <Navbar.Brand
-            as={Link}
-            to="/"
-            className="fw-bold d-flex align-items-center"
-          >
+    <div className="login-bg">
+      <div className="login-circle-1"></div>
+      <div className="login-circle-2"></div>
+
+      <Card className="login-card bg-white" style={{ opacity: 0 }}>
+        <Card.Body className="p-0">
+          <div className="text-center px-4 pt-4 pb-3">
             <div
-              className="studyspace-logo me-2 d-flex align-items-center justify-content-center rounded-3"
-              style={{ background: "#6366f1", width: "40px", height: "40px" }}
+              className="mx-auto rounded-3 d-flex align-items-center justify-content-center mb-3"
+              style={{
+                width: "64px",
+                height: "64px",
+                background: "#6366f1",
+                color: "white",
+                fontSize: "1.75rem",
+              }}
             >
-              <i className="bi bi-cup-hot-fill text-white"></i>
+              <i className="bi bi-cup-hot-fill"></i>
             </div>
-            <span style={{ color: "#1f2937" }}>StudySpace</span>
-          </Navbar.Brand>
+            <h2 className="fw-bold mb-0" style={{ color: "#2b2b2b", fontSize: "1.5rem" }}>
+              Study<span style={{ color: "#a78bfa" }}>Space</span>
+            </h2>
+            <p className="text-muted small mb-2" style={{ fontSize: "0.85rem" }}>
+              Coworking Space Management System
+            </p>
+            <Link
+              to="/"
+              className="btn btn-sm fw-bold rounded-pill px-3 py-2"
+              style={{
+                background: "linear-gradient(135deg, #c94caf, #d96cc5)",
+                color: "white",
+                textDecoration: "none",
+                display: "inline-block",
+              }}
+            >
+              <i className="bi bi-house-fill me-2"></i> Trang chủ
+            </Link>
+          </div>
 
-          <Navbar.Toggle />
-          <Navbar.Collapse>
-            <Nav className="me-auto ms-5">
-              <Nav.Link as={Link} to="/" className="fw-medium text-muted px-3">
-                Trang chủ
-              </Nav.Link>
-              <Nav.Link href="#spaces" className="fw-medium text-muted px-3">
-                Đặt chỗ
-              </Nav.Link>
-              <Nav.Link href="#menu" className="fw-medium text-muted px-3">
-                Thực đơn
-              </Nav.Link>
-            </Nav>
-
-            <div className="d-flex gap-3 align-items-center">
-              <AuthNavActions />
-            </div>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
-      {/* Login Section */}
-      <section className="flex-grow-1 d-flex align-items-center py-5">
-        <Container>
-          <Row className="justify-content-center">
-            <Col lg={6} md={8}>
-              <Card
-                className="border-0 shadow-lg rounded-4 overflow-hidden login-card"
-                style={{ opacity: 0 }}
+          <div className="px-4 py-4">
+            {error && (
+              <Alert
+                variant="danger"
+                dismissible
+                onClose={() => setError("")}
+                className="py-2 small mb-3"
               >
-                <Card.Body className="p-5">
-                  {/* Header */}
-                  <div className="text-center mb-5">
-                    <div
-                      className="mb-4 login-header-item"
-                      style={{ opacity: 0 }}
-                    >
-                      <i
-                        className="bi bi-cup-hot-fill"
-                        style={{ fontSize: "2.5rem", color: "#6366f1" }}
-                      ></i>
-                    </div>
-                    <h2
-                      className="fw-bold mb-2 login-header-item"
-                      style={{ opacity: 0, color: "#1f2937" }}
-                    >
-                      Đăng nhập
-                    </h2>
-                    <p
-                      className="text-muted small login-header-item"
-                      style={{ opacity: 0 }}
-                    >
-                      Chào mừng bạn quay trở lại. Đăng nhập để tiếp tục.
-                    </p>
-                  </div>
+                <i className="bi bi-exclamation-triangle-fill me-2"></i>
+                {error}
+              </Alert>
+            )}
+            {success && (
+              <Alert variant="success" className="py-2 small mb-3">
+                <i className="bi bi-check-circle-fill me-2"></i>
+                {success}
+              </Alert>
+            )}
 
-                  {error && (
-                    <Alert
-                      variant="danger"
-                      dismissible
-                      onClose={() => setError("")}
-                      className="py-2 small mb-4"
-                    >
-                      <i className="bi bi-exclamation-triangle-fill me-2"></i>
-                      {error}
-                    </Alert>
-                  )}
-                  {success && (
-                    <Alert variant="success" className="py-2 small mb-4">
-                      <i className="bi bi-check-circle-fill me-2"></i>
-                      {success}
-                    </Alert>
-                  )}
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3">
+                <Form.Label
+                  className="small fw-bold text-dark mb-2"
+                  style={{ fontSize: "0.9rem" }}
+                >
+                  Tên đăng nhập
+                </Form.Label>
+                <InputGroup className="login-input-group">
+                  <InputGroup.Text style={{ background: "transparent", border: "none" }}>
+                    <i className="bi bi-person-fill" style={{ color: "#a0a0a0" }}></i>
+                  </InputGroup.Text>
+                  <Form.Control
+                    type="text"
+                    placeholder="admin"
+                    value={identifier}
+                    onChange={(e) => setIdentifier(e.target.value)}
+                    disabled={loading}
+                    autoComplete="username"
+                    style={{
+                      background: "#f5f5f5",
+                      border: "none",
+                      fontSize: "0.95rem",
+                    }}
+                  />
+                </InputGroup>
+              </Form.Group>
 
-                  <Form onSubmit={handleSubmit}>
-                    {/* Email/Phone */}
-                    <Form.Group
-                      className="mb-4 login-form-item"
-                      style={{ opacity: 0 }}
-                    >
-                      <Form.Label
-                        className="fw-bold mb-2"
-                        style={{ color: "#1f2937" }}
-                      >
-                        Email hoặc Số điện thoại
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Nhập email hoặc số điện thoại"
-                        className="py-3 px-3 rounded-3 border-2 focus-ring focus-ring-primary transition-all"
-                        style={{
-                          borderColor: "#e5e7eb",
-                          color: "#1f2937",
-                        }}
-                        value={identifier}
-                        onChange={(e) => setIdentifier(e.target.value)}
-                        disabled={loading}
-                      />
-                    </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label
+                  className="small fw-bold text-dark mb-2"
+                  style={{ fontSize: "0.9rem" }}
+                >
+                  Mật khẩu
+                </Form.Label>
+                <InputGroup className="login-input-group">
+                  <InputGroup.Text style={{ background: "transparent", border: "none" }}>
+                    <i className="bi bi-lock-fill" style={{ color: "#a0a0a0" }}></i>
+                  </InputGroup.Text>
+                  <Form.Control
+                    type={showPassword ? "text" : "password"}
+                    placeholder="admin123"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    disabled={loading}
+                    autoComplete="current-password"
+                    style={{
+                      background: "#f5f5f5",
+                      border: "none",
+                      fontSize: "0.95rem",
+                    }}
+                  />
+                  <Button
+                    variant="link"
+                    className="text-muted text-decoration-none"
+                    style={{
+                      border: "none",
+                      background: "transparent",
+                      pointerEvents: "auto",
+                      color: "#a0a0a0",
+                    }}
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    <i className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}></i>
+                  </Button>
+                </InputGroup>
+              </Form.Group>
 
-                    {/* Password */}
-                    <Form.Group
-                      className="mb-4 login-form-item"
-                      style={{ opacity: 0 }}
-                    >
-                      <div className="d-flex justify-content-between align-items-center mb-2">
-                        <Form.Label
-                          className="fw-bold mb-0"
-                          style={{ color: "#1f2937" }}
-                        >
-                          Mật khẩu
-                        </Form.Label>
-                        <Link
-                          to="/forgot-password"
-                          className="text-primary text-decoration-none small fw-medium"
-                          style={{ color: "#6366f1" }}
-                        >
-                          Quên mật khẩu?
-                        </Link>
-                      </div>
-                      <Form.Control
-                        type="password"
-                        placeholder="Nhập mật khẩu"
-                        className="py-3 px-3 rounded-3 border-2 focus-ring focus-ring-primary transition-all"
-                        style={{
-                          borderColor: "#e5e7eb",
-                          color: "#1f2937",
-                        }}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        disabled={loading}
-                      />
-                    </Form.Group>
+              <div className="d-flex justify-content-between align-items-center mb-4">
+                <Form.Check
+                  type="checkbox"
+                  label={<span style={{ fontSize: "0.85rem" }}>Ghi nhớ</span>}
+                  className="text-muted"
+                />
+                <Link
+                  to="/forgot-password"
+                  className="small text-decoration-none"
+                  style={{ color: "#a78bfa", fontSize: "0.85rem" }}
+                >
+                  Quên mật khẩu?
+                </Link>
+              </div>
 
-                    {/* Remember Me */}
-                    <Form.Group
-                      className="mb-4 login-form-item"
-                      style={{ opacity: 0 }}
-                    >
-                      <Form.Check
-                        type="checkbox"
-                        label="Ghi nhớ đăng nhập"
-                        className="text-muted small"
-                      />
-                    </Form.Group>
-
-                    {/* Submit Button */}
-                    <Button
-                      variant="primary"
-                      type="submit"
-                      className="w-100 py-3 fw-bold mb-4 rounded-3 border-0 login-form-item transition-all d-flex align-items-center justify-content-center gap-2"
-                      style={{ backgroundColor: "#6366f1", opacity: 0 }}
-                      disabled={loading}
-                    >
-                      {loading ? (
-                        <>
-                          <Spinner animation="border" size="sm" />
-                          Đang đăng nhập...
-                        </>
-                      ) : (
-                        "Đăng nhập"
-                      )}
-                    </Button>
-
-                    {/* Sign Up Link */}
-                    <div
-                      className="text-center login-form-item"
-                      style={{ opacity: 0 }}
-                    >
-                      <p className="text-muted small mb-0">
-                        Chưa có tài khoản?{" "}
-                        <Link
-                          to="/register"
-                          className="fw-bold text-decoration-none"
-                          style={{ color: "#6366f1" }}
-                        >
-                          Đăng ký ngay
-                        </Link>
-                      </p>
-                    </div>
-                  </Form>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+              <Button
+                type="submit"
+                className="w-100 fw-bold mb-3 rounded-2"
+                style={{
+                  background: "linear-gradient(135deg, #8b5cf6, #a78bfa)",
+                  border: "none",
+                  padding: "0.7rem",
+                  fontSize: "0.95rem",
+                  color: "white",
+                }}
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <Spinner animation="border" size="sm" className="me-2" />
+                    Đang đăng nhập...
+                  </>
+                ) : (
+                  <>
+                    <i className="bi bi-box-arrow-in-right me-2"></i>
+                    Đăng Nhập
+                  </>
+                )}
+              </Button>
+            </Form>
+          </div>
+        </Card.Body>
+      </Card>
     </div>
   );
 }

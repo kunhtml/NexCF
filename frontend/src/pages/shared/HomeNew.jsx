@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Card,
@@ -10,6 +10,10 @@ import {
   Badge,
 } from "react-bootstrap";
 import { Link } from "react-router";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectCards } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-cards";
 import { useAuth } from "../../hooks/useAuth";
 import AuthNavActions from "../../components/common/AuthNavActions";
 
@@ -297,139 +301,76 @@ export default function Home() {
 
             <Col lg={5}>
               <div className="hero-card-preview">
-                <Card
-                  className="shadow-lg border-0 rounded-4"
-                  style={{ maxWidth: "300px", margin: "0 auto" }}
+                <Swiper
+                  modules={[EffectCards, Autoplay]}
+                  effect="cards"
+                  grabCursor={true}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                  }}
+                  loop={true}
+                  cardsEffect={{
+                    rotate: true,
+                    slideShadows: true,
+                  }}
+                  slidesPerView="auto"
+                  centeredSlides={true}
+                  className="workspace-swiper"
+                  style={{ maxWidth: "400px", margin: "0 auto", height: "400px" }}
                 >
-                  <Card.Header className="border-0 bg-transparent p-3">
-                    <div className="d-flex align-items-center justify-content-between">
-                      <Badge bg="success" className="px-3 py-2 fw-normal">
-                        Ghế cá nhân
-                      </Badge>
-                      <Badge bg="primary" className="px-2">
-                        Còn trống
-                      </Badge>
-                    </div>
-                  </Card.Header>
-                  <Card.Body className="text-center p-4">
-                    <div
-                      className="workspace-icon mb-3"
-                      style={{ fontSize: "3rem" }}
-                    >
-                      <i className="bi bi-person-workspace"></i>
-                    </div>
-                    <p className="text-muted small mb-3">
-                      Không gian yên tĩnh, 0 cầm riêng, đèn bàn,
-                      <br />
-                      Wi-Fi 5G tốc độ cao.
-                    </p>
-                    <h4 className="fw-bold text-primary">
-                      25,000<small>đ/giờ</small>
-                    </h4>
-                  </Card.Body>
-                </Card>
+                  {workspaceOptions.map((workspace) => (
+                    <SwiperSlide key={workspace.id} className="workspace-slide">
+                      <Card
+                        className="border-0 rounded-4 overflow-hidden h-100 workspace-card"
+                        style={{
+                          maxWidth: "320px",
+                          backdropFilter: "blur(10px)",
+                          background: "rgba(255, 255, 255, 0.95)",
+                          border: "1px solid rgba(255, 255, 255, 0.3)",
+                          boxShadow: "0 10px 20px rgba(0, 0, 0, 0.3)",
+                        }}
+                      >
+                        <Card.Header className="border-0 p-3 bg-transparent">
+                          <div className="d-flex justify-content-between align-items-start">
+                            <Badge bg="success" className="px-3 py-2 fw-normal">
+                              {workspace.badge}
+                            </Badge>
+                            <Badge bg={workspace.statusColor} className="px-2 py-1">
+                              {workspace.status}
+                            </Badge>
+                          </div>
+                        </Card.Header>
+
+                        <Card.Body className="text-center p-4">
+                          <div
+                            className="workspace-icon mb-3"
+                            style={{ fontSize: "3rem", color: "#6366f1" }}
+                          >
+                            <i className={workspace.icon}></i>
+                          </div>
+                          <h5 className="fw-bold mb-2 text-dark">{workspace.title}</h5>
+                          <p className="text-muted small mb-3">
+                            {workspace.description}
+                          </p>
+
+                          {workspace.price ? (
+                            <h4 className="fw-bold text-primary mb-0">
+                              {formatPrice(workspace.price)}
+                              <small>/giờ</small>
+                            </h4>
+                          ) : (
+                            <div className="mb-0">
+                              <span className="text-muted small">Hết chỗ</span>
+                            </div>
+                          )}
+                        </Card.Body>
+                      </Card>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </div>
             </Col>
-          </Row>
-        </Container>
-      </section>
-
-      {/* Workspace Selection Section */}
-      <section id="spaces" className="py-5 bg-light">
-        <Container>
-          <div className="text-center mb-5">
-            <Badge bg="primary" className="px-3 py-2 rounded-pill mb-3">
-              <i className="bi bi-geo-alt me-2"></i>
-              KHÔNG GIAN
-            </Badge>
-            <h2 className="fw-bold mb-3">Chọn chỗ ngồi phù hợp</h2>
-            <p className="text-muted lead">
-              Đa dạng loại hình từ ghế cá nhân đến phòng VIP, đặt trước online
-              dễ dàng
-            </p>
-          </div>
-
-          <Row className="g-4">
-            {workspaceOptions.map((workspace) => (
-              <Col
-                key={workspace.id}
-                lg={workspace.id === "vip10" ? 6 : 3}
-                md={6}
-              >
-                <Card className="h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-lift">
-                  <div
-                    className="card-header border-0 p-4 position-relative"
-                    style={{ backgroundColor: workspace.color }}
-                  >
-                    <div className="d-flex justify-content-between align-items-start mb-3">
-                      <Badge
-                        bg="light"
-                        text="primary"
-                        className="px-3 py-2 fw-normal"
-                      >
-                        {workspace.badge}
-                      </Badge>
-                      <Badge bg={workspace.statusColor} className="px-2 py-1">
-                        {workspace.status}
-                      </Badge>
-                    </div>
-
-                    <div
-                      className="workspace-icon mb-3"
-                      style={{ fontSize: "3rem" }}
-                    >
-                      <i className={workspace.icon}></i>
-                    </div>
-                  </div>
-
-                  <Card.Body className="p-4">
-                    <h5 className="fw-bold mb-2">{workspace.title}</h5>
-                    <p className="text-muted small mb-3">
-                      {workspace.description}
-                    </p>
-
-                    <div className="d-flex align-items-center gap-3 mb-4 small text-muted">
-                      <span>
-                        <i className="bi bi-people me-1 text-primary"></i>
-                        {workspace.capacity}
-                      </span>
-                      {workspace.features.map((feature, idx) => (
-                        <span key={idx}>
-                          <i className="bi bi-check-circle me-1 text-success"></i>
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="d-flex align-items-center justify-content-between">
-                      {workspace.price ? (
-                        <div>
-                          <h4 className="fw-bold text-primary mb-0">
-                            {formatPrice(workspace.price)}
-                            <small className="text-muted">/giờ</small>
-                          </h4>
-                        </div>
-                      ) : (
-                        <div>
-                          <span className="text-muted small">Hết chỗ</span>
-                        </div>
-                      )}
-
-                      <Button
-                        variant="primary"
-                        size="sm"
-                        className="px-4 rounded-pill fw-semibold"
-                        disabled={workspace.status === "Hết chỗ"}
-                        as={Link}
-                        to="/order-table"
-                      >
-                        Đặt
-                      </Button>
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
           </Row>
         </Container>
       </section>

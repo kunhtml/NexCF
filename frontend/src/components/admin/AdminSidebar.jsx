@@ -35,7 +35,9 @@ export default function AdminSidebar({ user, onLogout }) {
   const adminMenuSections = [
     {
       title: "TỔNG QUAN",
-      items: [{ path: "/admin-dashboard", icon: "bi-grid", label: "Dashboard" }],
+      items: [
+        { path: "/admin-dashboard", icon: "bi-grid", label: "Dashboard" },
+      ],
     },
     {
       title: "QUẢN LÝ NGƯỜI DÙNG",
@@ -98,7 +100,9 @@ export default function AdminSidebar({ user, onLogout }) {
   const staffMenuSections = [
     {
       title: "TỔNG QUAN",
-      items: [{ path: "/staff-dashboard", icon: "bi-grid", label: "Dashboard" }],
+      items: [
+        { path: "/staff-dashboard", icon: "bi-grid", label: "Dashboard" },
+      ],
     },
     {
       title: "CHECK-IN / CHECK-OUT",

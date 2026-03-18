@@ -17,11 +17,17 @@ export default function AdminLayout({ children }) {
     return <Navigate to="/login" replace />;
   }
 
-  if (location.pathname.startsWith("/admin-dashboard") && user.role !== "Admin") {
+  if (
+    location.pathname.startsWith("/admin-dashboard") &&
+    user.role !== "Admin"
+  ) {
     return <Navigate to={getDefaultDashboardByRole(user.role)} replace />;
   }
 
-  if (location.pathname.startsWith("/staff-dashboard") && user.role !== "Staff") {
+  if (
+    location.pathname.startsWith("/staff-dashboard") &&
+    user.role !== "Staff"
+  ) {
     return <Navigate to={getDefaultDashboardByRole(user.role)} replace />;
   }
 

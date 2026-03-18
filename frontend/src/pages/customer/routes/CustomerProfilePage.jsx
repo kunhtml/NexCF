@@ -1,4 +1,13 @@
-import { Badge, Button, Card, Col, Container, Form, Navbar, Row } from "react-bootstrap";
+import {
+  Badge,
+  Button,
+  Card,
+  Col,
+  Container,
+  Form,
+  Navbar,
+  Row,
+} from "react-bootstrap";
 import { Link } from "react-router";
 import { useAuth } from "../../../hooks/useAuth";
 import AuthNavActions from "../../../components/common/AuthNavActions";
@@ -20,7 +29,11 @@ export default function CustomerProfilePage() {
     <div className="d-flex flex-column min-vh-100 bg-light">
       <Navbar bg="white" expand="lg" className="py-3 shadow-sm border-0">
         <Container>
-          <Navbar.Brand as={Link} to="/" className="fw-bold d-flex align-items-center">
+          <Navbar.Brand
+            as={Link}
+            to="/"
+            className="fw-bold d-flex align-items-center"
+          >
             <div
               className="studyspace-logo me-2 d-flex align-items-center justify-content-center rounded-3"
               style={{ background: "#6366f1", width: "40px", height: "40px" }}
@@ -31,10 +44,30 @@ export default function CustomerProfilePage() {
           </Navbar.Brand>
 
           <div className="d-flex align-items-center gap-4 ms-auto">
-            <Link to="/" className="text-decoration-none fw-semibold text-primary">Trang chủ</Link>
-            <Link to="/order-table" className="text-decoration-none fw-semibold text-secondary">Đặt chỗ</Link>
-            <Link to="/menu" className="text-decoration-none fw-semibold text-secondary">Thực đơn</Link>
-            <Link to="/customer-dashboard/orders" className="text-decoration-none fw-semibold text-secondary">Đơn của tôi</Link>
+            <Link
+              to="/"
+              className="text-decoration-none fw-semibold text-primary"
+            >
+              Trang chủ
+            </Link>
+            <Link
+              to="/order-table"
+              className="text-decoration-none fw-semibold text-secondary"
+            >
+              Đặt chỗ
+            </Link>
+            <Link
+              to="/menu"
+              className="text-decoration-none fw-semibold text-secondary"
+            >
+              Thực đơn
+            </Link>
+            <Link
+              to="/customer-dashboard/orders"
+              className="text-decoration-none fw-semibold text-secondary"
+            >
+              Đơn của tôi
+            </Link>
             <AuthNavActions displayName={fullName} />
           </div>
         </Container>
@@ -57,13 +90,35 @@ export default function CustomerProfilePage() {
                 {initials}
               </div>
               <h3 className="fw-bold mt-3 mb-1">{fullName}</h3>
-              <p className="text-secondary fw-semibold mb-3">{email} • Thành viên từ 01/2025</p>
+              <p className="text-secondary fw-semibold mb-3">
+                {email} • Thành viên từ 01/2025
+              </p>
               <hr className="my-3" />
               <Row className="g-3">
-                <Col xs={6} md={2}><div className="text-primary fw-bold fs-4">12</div><div className="text-secondary fw-semibold small">Lần đặt chỗ</div></Col>
-                <Col xs={6} md={2}><div className="text-primary fw-bold fs-4">2.5M</div><div className="text-secondary fw-semibold small">Tổng chi tiêu</div></Col>
-                <Col xs={6} md={2}><div className="text-primary fw-bold fs-4">45h</div><div className="text-secondary fw-semibold small">Giờ sử dụng</div></Col>
-                <Col xs={6} md={3}><div className="text-primary fw-bold fs-4">⭐ Gold</div><div className="text-secondary fw-semibold small">Hạng thành viên</div></Col>
+                <Col xs={6} md={2}>
+                  <div className="text-primary fw-bold fs-4">12</div>
+                  <div className="text-secondary fw-semibold small">
+                    Lần đặt chỗ
+                  </div>
+                </Col>
+                <Col xs={6} md={2}>
+                  <div className="text-primary fw-bold fs-4">2.5M</div>
+                  <div className="text-secondary fw-semibold small">
+                    Tổng chi tiêu
+                  </div>
+                </Col>
+                <Col xs={6} md={2}>
+                  <div className="text-primary fw-bold fs-4">45h</div>
+                  <div className="text-secondary fw-semibold small">
+                    Giờ sử dụng
+                  </div>
+                </Col>
+                <Col xs={6} md={3}>
+                  <div className="text-primary fw-bold fs-4">⭐ Gold</div>
+                  <div className="text-secondary fw-semibold small">
+                    Hạng thành viên
+                  </div>
+                </Col>
               </Row>
             </Card.Body>
           </Card>
@@ -79,7 +134,11 @@ export default function CustomerProfilePage() {
               <Row className="g-3">
                 <Col md={6}>
                   <Form.Label className="fw-semibold">Họ và tên</Form.Label>
-                  <Form.Control value={fullName} readOnly className="bg-light" />
+                  <Form.Control
+                    value={fullName}
+                    readOnly
+                    className="bg-light"
+                  />
                 </Col>
                 <Col md={6}>
                   <Form.Label className="fw-semibold">Email</Form.Label>
@@ -91,11 +150,20 @@ export default function CustomerProfilePage() {
                 </Col>
                 <Col md={6}>
                   <Form.Label className="fw-semibold">Ngày sinh</Form.Label>
-                  <Form.Control type="date" value="2000-05-15" readOnly className="bg-light" />
+                  <Form.Control
+                    type="date"
+                    value="2000-05-15"
+                    readOnly
+                    className="bg-light"
+                  />
                 </Col>
                 <Col md={12}>
                   <Form.Label className="fw-semibold">Địa chỉ</Form.Label>
-                  <Form.Control value="123 Đường ABC, Quận 1, TP.HCM" readOnly className="bg-light" />
+                  <Form.Control
+                    value="123 Đường ABC, Quận 1, TP.HCM"
+                    readOnly
+                    className="bg-light"
+                  />
                 </Col>
               </Row>
 

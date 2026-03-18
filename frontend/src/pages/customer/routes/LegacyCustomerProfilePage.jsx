@@ -1,5 +1,5 @@
-import Profile from "../Profile";
+import CustomerProfilePage from "./CustomerProfilePage";
 
 export default function LegacyCustomerProfilePage() {
-  return <Profile />;
+  return <CustomerProfilePage />;
 }

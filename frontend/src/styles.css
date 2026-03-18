@@ -638,3 +638,94 @@ body {
     font-size: 2.5rem;
   }
 }
+/* Swiper Workspace Carousel */
+.workspace-swiper {
+  width: 100% !important;
+  max-width: 400px;
+  height: 500px;
+  padding: 20px 0;
+}
+
+.workspace-swiper .swiper-wrapper {
+  align-items: center;
+}
+
+.workspace-slide {
+  width: 300px !important;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.workspace-card {
+  transition: all 0.3s ease;
+}
+
+.workspace-slide.swiper-slide-active .workspace-card {
+  transform: scale(1.05);
+}
+
+/* Login Page Styles */
+.login-bg {
+  background: linear-gradient(135deg, #2a2c6b 0%, #4c4cc5 100%);
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-circle-1,
+.login-circle-2 {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.login-circle-1 {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  right: -50px;
+}
+
+.login-circle-2 {
+  width: 300px;
+  height: 300px;
+  bottom: -50px;
+  left: -100px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.login-card {
+  z-index: 10;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: none;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-input-group {
+  border-radius: 0.5rem;
+  border: 1px solid #dee2e6;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.login-input-group .input-group-text {
+  background: transparent;
+  border: none;
+  color: #6c757d;
+}
+
+.login-input-group .form-control {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0.75rem;
+  color: #495057;
+  font-size: 0.95rem;
+}

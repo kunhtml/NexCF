@@ -4,7 +4,10 @@ import AdminLayout from "../../components/admin/AdminLayout";
 export function meta() {
   return [
     { title: "Báo cáo doanh thu | Admin" },
-    { name: "description", content: "Phân tích doanh thu theo thời gian và danh mục" },
+    {
+      name: "description",
+      content: "Phân tích doanh thu theo thời gian và danh mục",
+    },
   ];
 }
 
@@ -40,35 +43,115 @@ const summaryCards = [
 ];
 
 const categoryRevenue = [
-  { name: "☕ Phí chỗ ngồi", sold: "67 phiên", revenue: "5,000,000đ", ratio: "40%", trend: "+15%", trendClass: "text-success" },
-  { name: "🥤 Đồ uống", sold: "124 ly", revenue: "3,125,000đ", ratio: "25%", trend: "+22%", trendClass: "text-success" },
-  { name: "🔌 Thiết bị thuê", sold: "18 lượt", revenue: "1,875,000đ", ratio: "15%", trend: "+8%", trendClass: "text-success" },
-  { name: "🖨 In ấn", sold: "890 trang", revenue: "1,250,000đ", ratio: "10%", trend: "-4%", trendClass: "text-danger" },
-  { name: "🥐 Đồ ăn", sold: "55 phần", revenue: "1,250,000đ", ratio: "10%", trend: "+6%", trendClass: "text-success" },
+  {
+    name: "☕ Phí chỗ ngồi",
+    sold: "67 phiên",
+    revenue: "5,000,000đ",
+    ratio: "40%",
+    trend: "+15%",
+    trendClass: "text-success",
+  },
+  {
+    name: "🥤 Đồ uống",
+    sold: "124 ly",
+    revenue: "3,125,000đ",
+    ratio: "25%",
+    trend: "+22%",
+    trendClass: "text-success",
+  },
+  {
+    name: "🔌 Thiết bị thuê",
+    sold: "18 lượt",
+    revenue: "1,875,000đ",
+    ratio: "15%",
+    trend: "+8%",
+    trendClass: "text-success",
+  },
+  {
+    name: "🖨 In ấn",
+    sold: "890 trang",
+    revenue: "1,250,000đ",
+    ratio: "10%",
+    trend: "-4%",
+    trendClass: "text-danger",
+  },
+  {
+    name: "🥐 Đồ ăn",
+    sold: "55 phần",
+    revenue: "1,250,000đ",
+    ratio: "10%",
+    trend: "+6%",
+    trendClass: "text-success",
+  },
 ];
 
 const chartDays = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"];
-const chartValues = ["9.5M", "7.2M", "11.0M", "8.8M", "14.2M", "15.0M", "12.0M", "8.2M", "10.8M", "12.5M"];
+const chartValues = [
+  "9.5M",
+  "7.2M",
+  "11.0M",
+  "8.8M",
+  "14.2M",
+  "15.0M",
+  "12.0M",
+  "8.2M",
+  "10.8M",
+  "12.5M",
+];
 
 export default function AdminRevenuePage() {
   return (
     <AdminLayout>
       <div className="mb-4">
         <h2 className="fw-bold mb-1">Báo cáo doanh thu</h2>
-        <p className="text-muted mb-0">Phân tích doanh thu theo ngày, tuần, tháng, danh mục</p>
+        <p className="text-muted mb-0">
+          Phân tích doanh thu theo ngày, tuần, tháng, danh mục
+        </p>
       </div>
 
       <Row className="g-3 mb-3 align-items-center">
         <Col lg={6} className="d-flex gap-2 flex-wrap">
-          <Button size="sm" variant="light" className="fw-semibold">Hôm nay</Button>
-          <Button size="sm" variant="link" className="fw-semibold text-secondary text-decoration-none">Tuần này</Button>
-          <Button size="sm" variant="link" className="fw-semibold text-secondary text-decoration-none">Tháng này</Button>
-          <Button size="sm" variant="link" className="fw-semibold text-secondary text-decoration-none">Quý này</Button>
+          <Button size="sm" variant="light" className="fw-semibold">
+            Hôm nay
+          </Button>
+          <Button
+            size="sm"
+            variant="link"
+            className="fw-semibold text-secondary text-decoration-none"
+          >
+            Tuần này
+          </Button>
+          <Button
+            size="sm"
+            variant="link"
+            className="fw-semibold text-secondary text-decoration-none"
+          >
+            Tháng này
+          </Button>
+          <Button
+            size="sm"
+            variant="link"
+            className="fw-semibold text-secondary text-decoration-none"
+          >
+            Quý này
+          </Button>
         </Col>
         <Col lg={6} className="d-flex justify-content-lg-end gap-2 flex-wrap">
-          <input type="date" className="form-control" style={{ width: 130 }} defaultValue="2025-01-10" />
-          <span className="d-flex align-items-center text-secondary fw-semibold">đến</span>
-          <input type="date" className="form-control" style={{ width: 130 }} defaultValue="2025-01-10" />
+          <input
+            type="date"
+            className="form-control"
+            style={{ width: 130 }}
+            defaultValue="2025-01-10"
+          />
+          <span className="d-flex align-items-center text-secondary fw-semibold">
+            đến
+          </span>
+          <input
+            type="date"
+            className="form-control"
+            style={{ width: 130 }}
+            defaultValue="2025-01-10"
+          />
           <Button className="staff-secondary-btn">
             <i className="bi bi-download me-2"></i>Xuất Excel
           </Button>
@@ -84,8 +167,12 @@ export default function AdminRevenuePage() {
                   <i className={`bi ${card.icon}`}></i>
                 </div>
                 <h3 className="fw-bold mt-3 mb-1">{card.value}</h3>
-                <div className="text-secondary fw-semibold mb-2">{card.label}</div>
-                <Badge className="bg-success-subtle text-success border-0">{card.delta}</Badge>
+                <div className="text-secondary fw-semibold mb-2">
+                  {card.label}
+                </div>
+                <Badge className="bg-success-subtle text-success border-0">
+                  {card.delta}
+                </Badge>
               </Card.Body>
             </Card>
           </Col>
@@ -101,10 +188,15 @@ export default function AdminRevenuePage() {
                 Doanh thu theo ngày (Tháng 1/2025)
               </h5>
             </Card.Header>
-            <Card.Body className="d-flex align-items-end justify-content-between" style={{ minHeight: 200 }}>
+            <Card.Body
+              className="d-flex align-items-end justify-content-between"
+              style={{ minHeight: 200 }}
+            >
               {chartDays.map((day, index) => (
                 <div key={day} className="text-center">
-                  <div className="fw-bold small text-secondary mb-2">{chartValues[index]}</div>
+                  <div className="fw-bold small text-secondary mb-2">
+                    {chartValues[index]}
+                  </div>
                   <div className="small text-secondary">{day}</div>
                 </div>
               ))}
@@ -126,11 +218,21 @@ export default function AdminRevenuePage() {
                 <small className="text-secondary">Hôm nay</small>
               </div>
               <div className="d-flex flex-column gap-2">
-                <div><span className="text-success">●</span> Phí chỗ ngồi — 40%</div>
-                <div><span className="text-primary">●</span> Đồ uống — 25%</div>
-                <div><span className="text-warning">●</span> Thiết bị thuê — 15%</div>
-                <div><span className="text-danger">●</span> In ấn — 10%</div>
-                <div><span className="text-secondary">●</span> Đồ ăn — 10%</div>
+                <div>
+                  <span className="text-success">●</span> Phí chỗ ngồi — 40%
+                </div>
+                <div>
+                  <span className="text-primary">●</span> Đồ uống — 25%
+                </div>
+                <div>
+                  <span className="text-warning">●</span> Thiết bị thuê — 15%
+                </div>
+                <div>
+                  <span className="text-danger">●</span> In ấn — 10%
+                </div>
+                <div>
+                  <span className="text-secondary">●</span> Đồ ăn — 10%
+                </div>
               </div>
             </Card.Body>
           </Card>
@@ -162,7 +264,9 @@ export default function AdminRevenuePage() {
                   <td className="fw-semibold">{row.sold}</td>
                   <td className="fw-bold">{row.revenue}</td>
                   <td className="fw-semibold">{row.ratio}</td>
-                  <td className={`fw-semibold ${row.trendClass}`}>{row.trend}</td>
+                  <td className={`fw-semibold ${row.trendClass}`}>
+                    {row.trend}
+                  </td>
                 </tr>
               ))}
             </tbody>

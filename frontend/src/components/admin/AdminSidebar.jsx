@@ -88,11 +88,6 @@ export default function AdminSidebar({ user, onLogout }) {
           icon: "bi-person-circle",
           label: "Hồ sơ cá nhân",
         },
-        {
-          path: "/admin-dashboard/password",
-          icon: "bi-key-fill",
-          label: "Đổi mật khẩu",
-        },
       ],
     },
   ];
@@ -153,11 +148,6 @@ export default function AdminSidebar({ user, onLogout }) {
           path: "/staff-dashboard/profile",
           icon: "bi-person-circle",
           label: "Hồ sơ cá nhân",
-        },
-        {
-          path: "/staff-dashboard/password",
-          icon: "bi-key-fill",
-          label: "Đổi mật khẩu",
         },
       ],
     },

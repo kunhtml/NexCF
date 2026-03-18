@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { useAuth } from "../../hooks/useAuth";
 import AdminLayout from "../../components/admin/AdminLayout";
+import { changePasswordApi } from "../../services/api";
 
 export function meta() {
   return [{ title: "Hồ sơ Admin | Nexus Admin" }];
@@ -27,10 +28,6 @@ function formatDate(iso) {
 
 export default function AdminProfile() {
   const { user: authUser, isAuthenticated } = useAuth();
-  const passwordPath =
-    authUser?.role === "Admin"
-      ? "/admin-dashboard/password"
-      : "/staff-dashboard/password";
 
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -44,6 +41,17 @@ export default function AdminProfile() {
   const [editMode, setEditMode] = useState(false);
   const [updateLoading, setUpdateLoading] = useState(false);
   const [message, setMessage] = useState({ type: "", content: "" });
+
+  const [passwordForm, setPasswordForm] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+  const [passwordLoading, setPasswordLoading] = useState(false);
+  const [passwordMessage, setPasswordMessage] = useState({
+    type: "",
+    content: "",
+  });
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -120,6 +128,58 @@ export default function AdminProfile() {
     setPhone(profile?.phone || "");
     setEditMode(false);
     setMessage({ type: "", content: "" });
+  };
+
+  const onPasswordChange = (field, value) => {
+    setPasswordForm((prev) => ({ ...prev, [field]: value }));
+    if (passwordMessage.content) {
+      setPasswordMessage({ type: "", content: "" });
+    }
+  };
+
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    setPasswordMessage({ type: "", content: "" });
+
+    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+      setPasswordMessage({
+        type: "danger",
+        content: "Mật khẩu mới và xác nhận mật khẩu không khớp.",
+      });
+      return;
+    }
+
+    if (passwordForm.newPassword.length < 6) {
+      setPasswordMessage({
+        type: "danger",
+        content: "Mật khẩu mới phải có ít nhất 6 ký tự.",
+      });
+      return;
+    }
+
+    try {
+      setPasswordLoading(true);
+      await changePasswordApi({
+        currentPassword: passwordForm.currentPassword,
+        newPassword: passwordForm.newPassword,
+      });
+      setPasswordMessage({
+        type: "success",
+        content: "Đổi mật khẩu thành công!",
+      });
+      setPasswordForm({
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+    } catch (error) {
+      setPasswordMessage({
+        type: "danger",
+        content: error.message || "Không thể đổi mật khẩu.",
+      });
+    } finally {
+      setPasswordLoading(false);
+    }
   };
 
   // Status mapping
@@ -379,16 +439,120 @@ export default function AdminProfile() {
                     </div>
 
                     <div className="border-top pt-3">
-                      <Button
-                        variant="outline-warning"
-                        size="sm"
-                        className="w-100"
-                        href={passwordPath}
-                      >
+                      <Button variant="outline-warning" size="sm" className="w-100" disabled>
                         <i className="bi bi-key me-2"></i>
-                        Đổi mật khẩu
+                        Đổi mật khẩu ở biểu mẫu bên dưới
                       </Button>
                     </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+
+            <Row className="g-4 mt-1">
+              <Col lg={8}>
+                <Card className="border-0 shadow-sm">
+                  <Card.Header className="bg-white border-0 pb-0">
+                    <h5 className="mb-0 fw-semibold">
+                      <i className="bi bi-key-fill text-primary me-2"></i>
+                      Đổi mật khẩu
+                    </h5>
+                  </Card.Header>
+                  <Card.Body className="pt-4">
+                    {passwordMessage.content && (
+                      <Alert
+                        variant={passwordMessage.type}
+                        dismissible
+                        onClose={() =>
+                          setPasswordMessage({ type: "", content: "" })
+                        }
+                      >
+                        {passwordMessage.content}
+                      </Alert>
+                    )}
+
+                    <Form onSubmit={handleChangePassword}>
+                      <Row className="g-3">
+                        <Col md={4}>
+                          <Form.Group>
+                            <Form.Label className="fw-semibold">
+                              Mật khẩu hiện tại
+                            </Form.Label>
+                            <Form.Control
+                              type="password"
+                              value={passwordForm.currentPassword}
+                              onChange={(e) =>
+                                onPasswordChange(
+                                  "currentPassword",
+                                  e.target.value,
+                                )
+                              }
+                              required
+                              disabled={passwordLoading}
+                            />
+                          </Form.Group>
+                        </Col>
+                        <Col md={4}>
+                          <Form.Group>
+                            <Form.Label className="fw-semibold">
+                              Mật khẩu mới
+                            </Form.Label>
+                            <Form.Control
+                              type="password"
+                              value={passwordForm.newPassword}
+                              minLength={6}
+                              onChange={(e) =>
+                                onPasswordChange("newPassword", e.target.value)
+                              }
+                              required
+                              disabled={passwordLoading}
+                            />
+                          </Form.Group>
+                        </Col>
+                        <Col md={4}>
+                          <Form.Group>
+                            <Form.Label className="fw-semibold">
+                              Xác nhận mật khẩu mới
+                            </Form.Label>
+                            <Form.Control
+                              type="password"
+                              value={passwordForm.confirmPassword}
+                              onChange={(e) =>
+                                onPasswordChange(
+                                  "confirmPassword",
+                                  e.target.value,
+                                )
+                              }
+                              required
+                              disabled={passwordLoading}
+                              className={
+                                passwordForm.confirmPassword &&
+                                passwordForm.newPassword !==
+                                  passwordForm.confirmPassword
+                                  ? "is-invalid"
+                                  : ""
+                              }
+                            />
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      <div className="d-flex justify-content-end mt-3">
+                        <Button type="submit" variant="primary" disabled={passwordLoading}>
+                          {passwordLoading ? (
+                            <>
+                              <Spinner animation="border" size="sm" className="me-2" />
+                              Đang cập nhật...
+                            </>
+                          ) : (
+                            <>
+                              <i className="bi bi-check-lg me-2"></i>
+                              Cập nhật mật khẩu
+                            </>
+                          )}
+                        </Button>
+                      </div>
+                    </Form>
                   </Card.Body>
                 </Card>
               </Col>

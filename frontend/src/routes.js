@@ -33,7 +33,7 @@ export default [
   route("admin-dashboard/users", "pages/admin/AdminUsers.jsx"),
   route("admin-dashboard/services", "pages/admin/AdminPage.jsx"),
   route("admin-dashboard/spaces", "pages/admin/AdminTablesNew.jsx"),
-  route("admin-dashboard/revenue", "pages/admin/ReportAnalyticsPage.jsx"),
+  route("admin-dashboard/revenue", "pages/admin/AdminRevenuePage.jsx"),
   route("admin-dashboard/analytics", "pages/admin/AdminAnalytics.jsx"),
   route("admin-dashboard/profile", "pages/admin/routes/AdminProfilePage.jsx"),
   route("admin-dashboard/password", "pages/admin/routes/AdminPasswordPage.jsx"),

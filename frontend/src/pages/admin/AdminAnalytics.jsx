@@ -14,7 +14,7 @@ export function meta() {
 
 export default function AdminAnalytics() {
   const [filterTab, setFilterTab] = useState("today");
-  
+
   const metrics = {
     occupancy: 72,
     avgTime: "2h 45p",
@@ -122,22 +122,22 @@ export default function AdminAnalytics() {
       <div>
         {/* Header */}
         <div className="mb-5 pb-3">
-          <h1 
+          <h1
             className="fw-bold mb-2"
             style={{ fontSize: "28px", color: "#1e293b" }}
           >
             Công suất & Sử dụng
           </h1>
-          <p 
-            className="mb-0"
-            style={{ fontSize: "15px", color: "#64748b" }}
-          >
+          <p className="mb-0" style={{ fontSize: "15px", color: "#64748b" }}>
             Tỷ lệ lấp đầy, khung giờ cao điểm, xếp hạng không gian
           </p>
         </div>
 
         {/* Filter Tabs */}
-        <div className="mb-5 d-flex gap-3" style={{ borderBottom: "1px solid #e2e8f0", paddingBottom: "0" }}>
+        <div
+          className="mb-5 d-flex gap-3"
+          style={{ borderBottom: "1px solid #e2e8f0", paddingBottom: "0" }}
+        >
           {[
             { value: "today", label: "Hôm nay", text: "Today" },
             { value: "week", label: "Tuần này", text: "This Week" },
@@ -150,7 +150,8 @@ export default function AdminAnalytics() {
                 padding: "12px 20px",
                 border: "none",
                 backgroundColor: "transparent",
-                borderBottom: filterTab === tab.value ? "3px solid #8b5cf6" : "none",
+                borderBottom:
+                  filterTab === tab.value ? "3px solid #8b5cf6" : "none",
                 color: filterTab === tab.value ? "#8b5cf6" : "#94a3b8",
                 fontWeight: filterTab === tab.value ? "600" : "500",
                 fontSize: "14px",
@@ -176,7 +177,7 @@ export default function AdminAnalytics() {
         {/* Metric Cards */}
         <Row className="g-3 mb-5">
           <Col lg={3} md={6}>
-            <Card 
+            <Card
               className="border-0"
               style={{
                 backgroundColor: "white",
@@ -187,13 +188,33 @@ export default function AdminAnalytics() {
               <Card.Body className="p-4">
                 <div className="d-flex align-items-start justify-content-between">
                   <div>
-                    <div style={{ fontSize: "12px", color: "#94a3b8", fontWeight: "600", marginBottom: "8px" }}>
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        color: "#94a3b8",
+                        fontWeight: "600",
+                        marginBottom: "8px",
+                      }}
+                    >
                       Tỷ lệ lấp đầy trung bình
                     </div>
-                    <div style={{ fontSize: "32px", fontWeight: "700", color: "#8b5cf6", marginBottom: "6px" }}>
+                    <div
+                      style={{
+                        fontSize: "32px",
+                        fontWeight: "700",
+                        color: "#8b5cf6",
+                        marginBottom: "6px",
+                      }}
+                    >
                       {metrics.occupancy}%
                     </div>
-                    <div style={{ fontSize: "12px", color: "#22c55e", fontWeight: "600" }}>
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        color: "#22c55e",
+                        fontWeight: "600",
+                      }}
+                    >
                       <i className="bi bi-arrow-up me-1"></i>
                       +15% vs tuần trước
                     </div>
@@ -205,7 +226,7 @@ export default function AdminAnalytics() {
           </Col>
 
           <Col lg={3} md={6}>
-            <Card 
+            <Card
               className="border-0"
               style={{
                 backgroundColor: "white",
@@ -216,13 +237,33 @@ export default function AdminAnalytics() {
               <Card.Body className="p-4">
                 <div className="d-flex align-items-start justify-content-between">
                   <div>
-                    <div style={{ fontSize: "12px", color: "#94a3b8", fontWeight: "600", marginBottom: "8px" }}>
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        color: "#94a3b8",
+                        fontWeight: "600",
+                        marginBottom: "8px",
+                      }}
+                    >
                       Thời gian nghỉ trung bình
                     </div>
-                    <div style={{ fontSize: "32px", fontWeight: "700", color: "#10b981", marginBottom: "6px" }}>
+                    <div
+                      style={{
+                        fontSize: "32px",
+                        fontWeight: "700",
+                        color: "#10b981",
+                        marginBottom: "6px",
+                      }}
+                    >
                       {metrics.avgTime}
                     </div>
-                    <div style={{ fontSize: "12px", color: "#22c55e", fontWeight: "600" }}>
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        color: "#22c55e",
+                        fontWeight: "600",
+                      }}
+                    >
                       <i className="bi bi-arrow-up me-1"></i>
                       +16 phút
                     </div>
@@ -234,7 +275,7 @@ export default function AdminAnalytics() {
           </Col>
 
           <Col lg={3} md={6}>
-            <Card 
+            <Card
               className="border-0"
               style={{
                 backgroundColor: "white",
@@ -245,13 +286,33 @@ export default function AdminAnalytics() {
               <Card.Body className="p-4">
                 <div className="d-flex align-items-start justify-content-between">
                   <div>
-                    <div style={{ fontSize: "12px", color: "#94a3b8", fontWeight: "600", marginBottom: "8px" }}>
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        color: "#94a3b8",
+                        fontWeight: "600",
+                        marginBottom: "8px",
+                      }}
+                    >
                       Khung giờ cao điểm
                     </div>
-                    <div style={{ fontSize: "32px", fontWeight: "700", color: "#f59e0b", marginBottom: "6px" }}>
+                    <div
+                      style={{
+                        fontSize: "32px",
+                        fontWeight: "700",
+                        color: "#f59e0b",
+                        marginBottom: "6px",
+                      }}
+                    >
                       {metrics.peakHours}
                     </div>
-                    <div style={{ fontSize: "12px", color: "#22c55e", fontWeight: "600" }}>
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        color: "#22c55e",
+                        fontWeight: "600",
+                      }}
+                    >
                       <i className="bi bi-arrow-up me-1"></i>
                       92% lấp đầy
                     </div>
@@ -263,7 +324,7 @@ export default function AdminAnalytics() {
           </Col>
 
           <Col lg={3} md={6}>
-            <Card 
+            <Card
               className="border-0"
               style={{
                 backgroundColor: "white",
@@ -274,13 +335,33 @@ export default function AdminAnalytics() {
               <Card.Body className="p-4">
                 <div className="d-flex align-items-start justify-content-between">
                   <div>
-                    <div style={{ fontSize: "12px", color: "#94a3b8", fontWeight: "600", marginBottom: "8px" }}>
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        color: "#94a3b8",
+                        fontWeight: "600",
+                        marginBottom: "8px",
+                      }}
+                    >
                       Tỷ lệ No-show
                     </div>
-                    <div style={{ fontSize: "32px", fontWeight: "700", color: "#ef4444", marginBottom: "6px" }}>
+                    <div
+                      style={{
+                        fontSize: "32px",
+                        fontWeight: "700",
+                        color: "#ef4444",
+                        marginBottom: "6px",
+                      }}
+                    >
                       {metrics.noShowRate}%
                     </div>
-                    <div style={{ fontSize: "12px", color: "#ef4444", fontWeight: "600" }}>
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        color: "#ef4444",
+                        fontWeight: "600",
+                      }}
+                    >
                       <i className="bi bi-arrow-down me-1"></i>
                       -1.5%
                     </div>
@@ -296,7 +377,7 @@ export default function AdminAnalytics() {
         <Row className="g-4 mb-5">
           {/* Hourly Capacity Chart */}
           <Col lg={7}>
-            <Card 
+            <Card
               className="border-0"
               style={{
                 backgroundColor: "white",
@@ -305,17 +386,35 @@ export default function AdminAnalytics() {
               }}
             >
               <Card.Body className="p-4">
-                <h5 
+                <h5
                   className="mb-4 fw-bold"
                   style={{ fontSize: "16px", color: "#1e293b" }}
                 >
-                  <i className="bi bi-bar-chart" style={{ color: "#8b5cf6", marginRight: "8px" }}></i>
+                  <i
+                    className="bi bi-bar-chart"
+                    style={{ color: "#8b5cf6", marginRight: "8px" }}
+                  ></i>
                   Công suất theo khung giờ
                 </h5>
 
-                <div style={{ height: "300px", display: "flex", alignItems: "flex-end", gap: "8px" }}>
+                <div
+                  style={{
+                    height: "300px",
+                    display: "flex",
+                    alignItems: "flex-end",
+                    gap: "8px",
+                  }}
+                >
                   {hourlyCapacity.map((item, idx) => (
-                    <div key={idx} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
+                    <div
+                      key={idx}
+                      style={{
+                        flex: 1,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
                       <div
                         style={{
                           width: "100%",
@@ -327,21 +426,35 @@ export default function AdminAnalytics() {
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor = "#8b5cf6";
-                          e.currentTarget.style.boxShadow = "0 4px 12px rgba(139, 92, 246, 0.3)";
+                          e.currentTarget.style.boxShadow =
+                            "0 4px 12px rgba(139, 92, 246, 0.3)";
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.backgroundColor = "#c7d2fe";
                           e.currentTarget.style.boxShadow = "none";
                         }}
                       />
-                      <small style={{ color: "#94a3b8", fontWeight: "600", marginTop: "8px", fontSize: "11px" }}>
+                      <small
+                        style={{
+                          color: "#94a3b8",
+                          fontWeight: "600",
+                          marginTop: "8px",
+                          fontSize: "11px",
+                        }}
+                      >
                         {item.time}
                       </small>
                     </div>
                   ))}
                 </div>
 
-                <div style={{ marginTop: "20px", paddingTop: "20px", borderTop: "1px solid #f1f5f9" }}>
+                <div
+                  style={{
+                    marginTop: "20px",
+                    paddingTop: "20px",
+                    borderTop: "1px solid #f1f5f9",
+                  }}
+                >
                   <small style={{ color: "#f59e0b", fontWeight: "600" }}>
                     <i className="bi bi-exclamation-circle me-1"></i>
                     Cao điểm: 14:00 - 16:00 (88–95% lấp đầy)
@@ -353,7 +466,7 @@ export default function AdminAnalytics() {
 
           {/* Heatmap */}
           <Col lg={5}>
-            <Card 
+            <Card
               className="border-0"
               style={{
                 backgroundColor: "white",
@@ -362,22 +475,46 @@ export default function AdminAnalytics() {
               }}
             >
               <Card.Body className="p-4">
-                <h5 
+                <h5
                   className="mb-3 fw-bold"
                   style={{ fontSize: "16px", color: "#1e293b" }}
                 >
-                  <i className="bi bi-calendar-heat" style={{ color: "#8b5cf6", marginRight: "8px" }}></i>
+                  <i
+                    className="bi bi-calendar-heat"
+                    style={{ color: "#8b5cf6", marginRight: "8px" }}
+                  ></i>
                   Heatmap tuần này
                 </h5>
 
-                <small style={{ color: "#64748b", fontSize: "12px", display: "block", marginBottom: "16px" }}>
+                <small
+                  style={{
+                    color: "#64748b",
+                    fontSize: "12px",
+                    display: "block",
+                    marginBottom: "16px",
+                  }}
+                >
                   Mức độ sử dụng theo ngày & khung giờ:
                 </small>
 
                 {heatmapData.map((row, rowIdx) => (
                   <div key={rowIdx} style={{ marginBottom: "16px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
-                      <small style={{ width: "40px", color: "#64748b", fontWeight: "600", fontSize: "11px" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        marginBottom: "8px",
+                      }}
+                    >
+                      <small
+                        style={{
+                          width: "40px",
+                          color: "#64748b",
+                          fontWeight: "600",
+                          fontSize: "11px",
+                        }}
+                      >
                         {row.type}
                       </small>
                       <div style={{ display: "flex", gap: "4px", flex: 1 }}>
@@ -395,7 +532,8 @@ export default function AdminAnalytics() {
                             }}
                             onMouseEnter={(e) => {
                               e.currentTarget.style.transform = "scale(1.1)";
-                              e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.15)";
+                              e.currentTarget.style.boxShadow =
+                                "0 4px 8px rgba(0, 0, 0, 0.15)";
                             }}
                             onMouseLeave={(e) => {
                               e.currentTarget.style.transform = "none";
@@ -408,15 +546,35 @@ export default function AdminAnalytics() {
                   </div>
                 ))}
 
-                <div style={{ marginTop: "16px", paddingTop: "12px", borderTop: "1px solid #f1f5f9" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "11px" }}>
+                <div
+                  style={{
+                    marginTop: "16px",
+                    paddingTop: "12px",
+                    borderTop: "1px solid #f1f5f9",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                      fontSize: "11px",
+                    }}
+                  >
                     <div>
-                      <div style={{ width: "16px", height: "16px", backgroundColor: "#f3f4f6", borderRadius: "2px" }} />
+                      <div
+                        style={{
+                          width: "16px",
+                          height: "16px",
+                          backgroundColor: "#f3f4f6",
+                          borderRadius: "2px",
+                        }}
+                      />
                     </div>
                     <span style={{ color: "#94a3b8" }}>15%</span>
                     <div style={{ display: "flex", gap: "4px" }}>
                       {[4, 3, 2, 1].map((idx) => (
-                        <div 
+                        <div
                           key={idx}
                           style={{
                             width: "16px",
@@ -436,7 +594,7 @@ export default function AdminAnalytics() {
         </Row>
 
         {/* Top Spaces Table */}
-        <Card 
+        <Card
           className="border-0"
           style={{
             backgroundColor: "white",
@@ -445,11 +603,14 @@ export default function AdminAnalytics() {
           }}
         >
           <Card.Body className="p-4">
-            <h5 
+            <h5
               className="mb-4 fw-bold"
               style={{ fontSize: "16px", color: "#1e293b" }}
             >
-              <i className="bi bi-trophy" style={{ color: "#f59e0b", marginRight: "8px" }}></i>
+              <i
+                className="bi bi-trophy"
+                style={{ color: "#f59e0b", marginRight: "8px" }}
+              ></i>
               Xếp hạng không gian được sử dụng nhiều nhất
             </h5>
 
@@ -457,62 +618,195 @@ export default function AdminAnalytics() {
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                   <tr style={{ borderBottom: "1px solid #f1f5f9" }}>
-                    <th style={{ padding: "12px", textAlign: "left", color: "#64748b", fontWeight: "600", fontSize: "12px" }}>#</th>
-                    <th style={{ padding: "12px", textAlign: "left", color: "#64748b", fontWeight: "600", fontSize: "12px" }}>KHÔNG GIAN</th>
-                    <th style={{ padding: "12px", textAlign: "left", color: "#64748b", fontWeight: "600", fontSize: "12px" }}>LOẠI</th>
-                    <th style={{ padding: "12px", textAlign: "left", color: "#64748b", fontWeight: "600", fontSize: "12px" }}>SỐ PHIÊN</th>
-                    <th style={{ padding: "12px", textAlign: "left", color: "#64748b", fontWeight: "600", fontSize: "12px" }}>TỔNG GIỜ</th>
-                    <th style={{ padding: "12px", textAlign: "left", color: "#64748b", fontWeight: "600", fontSize: "12px" }}>DOANH THU</th>
-                    <th style={{ padding: "12px", textAlign: "left", color: "#64748b", fontWeight: "600", fontSize: "12px" }}>TỶ LỆ SỬ DỤNG</th>
+                    <th
+                      style={{
+                        padding: "12px",
+                        textAlign: "left",
+                        color: "#64748b",
+                        fontWeight: "600",
+                        fontSize: "12px",
+                      }}
+                    >
+                      #
+                    </th>
+                    <th
+                      style={{
+                        padding: "12px",
+                        textAlign: "left",
+                        color: "#64748b",
+                        fontWeight: "600",
+                        fontSize: "12px",
+                      }}
+                    >
+                      KHÔNG GIAN
+                    </th>
+                    <th
+                      style={{
+                        padding: "12px",
+                        textAlign: "left",
+                        color: "#64748b",
+                        fontWeight: "600",
+                        fontSize: "12px",
+                      }}
+                    >
+                      LOẠI
+                    </th>
+                    <th
+                      style={{
+                        padding: "12px",
+                        textAlign: "left",
+                        color: "#64748b",
+                        fontWeight: "600",
+                        fontSize: "12px",
+                      }}
+                    >
+                      SỐ PHIÊN
+                    </th>
+                    <th
+                      style={{
+                        padding: "12px",
+                        textAlign: "left",
+                        color: "#64748b",
+                        fontWeight: "600",
+                        fontSize: "12px",
+                      }}
+                    >
+                      TỔNG GIỜ
+                    </th>
+                    <th
+                      style={{
+                        padding: "12px",
+                        textAlign: "left",
+                        color: "#64748b",
+                        fontWeight: "600",
+                        fontSize: "12px",
+                      }}
+                    >
+                      DOANH THU
+                    </th>
+                    <th
+                      style={{
+                        padding: "12px",
+                        textAlign: "left",
+                        color: "#64748b",
+                        fontWeight: "600",
+                        fontSize: "12px",
+                      }}
+                    >
+                      TỶ LỆ SỬ DỤNG
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {topSpaces.map((space, idx) => (
-                    <tr 
+                    <tr
                       key={idx}
                       style={{
                         borderBottom: "1px solid #f1f5f9",
-                        backgroundColor: idx % 2 === 0 ? "transparent" : "#f9fafb",
+                        backgroundColor:
+                          idx % 2 === 0 ? "transparent" : "#f9fafb",
                         transition: "background-color 0.2s",
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor = "#f3f4f6";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = idx % 2 === 0 ? "transparent" : "#f9fafb";
+                        e.currentTarget.style.backgroundColor =
+                          idx % 2 === 0 ? "transparent" : "#f9fafb";
                       }}
                     >
-                      <td style={{ padding: "12px", color: "#64748b", fontSize: "13px", fontWeight: "600" }}>
+                      <td
+                        style={{
+                          padding: "12px",
+                          color: "#64748b",
+                          fontSize: "13px",
+                          fontWeight: "600",
+                        }}
+                      >
                         {space.rank}
                       </td>
-                      <td style={{ padding: "12px", color: "#1e293b", fontSize: "13px", fontWeight: "600" }}>
+                      <td
+                        style={{
+                          padding: "12px",
+                          color: "#1e293b",
+                          fontSize: "13px",
+                          fontWeight: "600",
+                        }}
+                      >
                         {space.space}
                       </td>
-                      <td style={{ padding: "12px", color: "#64748b", fontSize: "13px" }}>
+                      <td
+                        style={{
+                          padding: "12px",
+                          color: "#64748b",
+                          fontSize: "13px",
+                        }}
+                      >
                         {space.type}
                       </td>
-                      <td style={{ padding: "12px", color: "#64748b", fontSize: "13px" }}>
+                      <td
+                        style={{
+                          padding: "12px",
+                          color: "#64748b",
+                          fontSize: "13px",
+                        }}
+                      >
                         {space.sessions} phiên
                       </td>
-                      <td style={{ padding: "12px", color: "#64748b", fontSize: "13px" }}>
+                      <td
+                        style={{
+                          padding: "12px",
+                          color: "#64748b",
+                          fontSize: "13px",
+                        }}
+                      >
                         {space.totalHours}
                       </td>
-                      <td style={{ padding: "12px", color: "#1e293b", fontSize: "13px", fontWeight: "600" }}>
+                      <td
+                        style={{
+                          padding: "12px",
+                          color: "#1e293b",
+                          fontSize: "13px",
+                          fontWeight: "600",
+                        }}
+                      >
                         {space.revenue}
                       </td>
                       <td style={{ padding: "12px" }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                          <div style={{ flex: 1, height: "4px", backgroundColor: "#e2e8f0", borderRadius: "2px" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px",
+                          }}
+                        >
+                          <div
+                            style={{
+                              flex: 1,
+                              height: "4px",
+                              backgroundColor: "#e2e8f0",
+                              borderRadius: "2px",
+                            }}
+                          >
                             <div
                               style={{
                                 height: "100%",
                                 width: `${space.usageRate}%`,
-                                backgroundColor: getColorForUsage(space.usageRate),
+                                backgroundColor: getColorForUsage(
+                                  space.usageRate,
+                                ),
                                 borderRadius: "2px",
                               }}
                             />
                           </div>
-                          <span style={{ fontSize: "13px", fontWeight: "600", color: "#1e293b", minWidth: "32px" }}>
+                          <span
+                            style={{
+                              fontSize: "13px",
+                              fontWeight: "600",
+                              color: "#1e293b",
+                              minWidth: "32px",
+                            }}
+                          >
                             {space.usageRate}%
                           </span>
                         </div>

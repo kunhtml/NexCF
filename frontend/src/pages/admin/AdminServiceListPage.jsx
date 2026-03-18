@@ -130,21 +130,21 @@ export default function AdminServiceListPage() {
       <div className="mb-5 pb-3">
         <div className="d-flex justify-content-between align-items-center mb-3">
           <div>
-            <h1 
+            <h1
               className="fw-bold mb-2"
               style={{ fontSize: "28px", color: "#1e293b" }}
             >
-              <i className="bi bi-cup-hot" style={{ color: "#3b82f6", marginRight: "8px" }}></i>
+              <i
+                className="bi bi-cup-hot"
+                style={{ color: "#3b82f6", marginRight: "8px" }}
+              ></i>
               Quản lý dịch vụ & Thực đơn
             </h1>
-            <p 
-              className="mb-0"
-              style={{ fontSize: "15px", color: "#64748b" }}
-            >
+            <p className="mb-0" style={{ fontSize: "15px", color: "#64748b" }}>
               Quản lý đồ uống, đồ ăn, dịch vụ in ấn và cho thuê thiết bị
             </p>
           </div>
-          <button 
+          <button
             className="btn px-4"
             style={{
               backgroundColor: "#3b82f6",
@@ -164,7 +164,7 @@ export default function AdminServiceListPage() {
       {/* Stats Cards */}
       <Row className="g-3 mb-5">
         <Col md={6} lg={3}>
-          <Card 
+          <Card
             className="border-0"
             style={{
               backgroundColor: "white",
@@ -190,10 +190,22 @@ export default function AdminServiceListPage() {
                 ></i>
               </div>
               <div>
-                <div style={{ fontSize: "13px", color: "#64748b", fontWeight: "600" }}>
+                <div
+                  style={{
+                    fontSize: "13px",
+                    color: "#64748b",
+                    fontWeight: "600",
+                  }}
+                >
                   Tổng dịch vụ
                 </div>
-                <div style={{ fontSize: "24px", fontWeight: "700", color: "#1e293b" }}>
+                <div
+                  style={{
+                    fontSize: "24px",
+                    fontWeight: "700",
+                    color: "#1e293b",
+                  }}
+                >
                   12
                 </div>
               </div>
@@ -201,7 +213,7 @@ export default function AdminServiceListPage() {
           </Card>
         </Col>
         <Col md={6} lg={3}>
-          <Card 
+          <Card
             className="border-0"
             style={{
               backgroundColor: "white",
@@ -227,10 +239,22 @@ export default function AdminServiceListPage() {
                 ></i>
               </div>
               <div>
-                <div style={{ fontSize: "13px", color: "#64748b", fontWeight: "600" }}>
+                <div
+                  style={{
+                    fontSize: "13px",
+                    color: "#64748b",
+                    fontWeight: "600",
+                  }}
+                >
                   Sắp hết hàng
                 </div>
-                <div style={{ fontSize: "24px", fontWeight: "700", color: "#1e293b" }}>
+                <div
+                  style={{
+                    fontSize: "24px",
+                    fontWeight: "700",
+                    color: "#1e293b",
+                  }}
+                >
                   2
                 </div>
               </div>
@@ -238,7 +262,7 @@ export default function AdminServiceListPage() {
           </Card>
         </Col>
         <Col md={6} lg={3}>
-          <Card 
+          <Card
             className="border-0"
             style={{
               backgroundColor: "white",
@@ -264,10 +288,22 @@ export default function AdminServiceListPage() {
                 ></i>
               </div>
               <div>
-                <div style={{ fontSize: "13px", color: "#64748b", fontWeight: "600" }}>
+                <div
+                  style={{
+                    fontSize: "13px",
+                    color: "#64748b",
+                    fontWeight: "600",
+                  }}
+                >
                   Hết hàng
                 </div>
-                <div style={{ fontSize: "24px", fontWeight: "700", color: "#1e293b" }}>
+                <div
+                  style={{
+                    fontSize: "24px",
+                    fontWeight: "700",
+                    color: "#1e293b",
+                  }}
+                >
                   1
                 </div>
               </div>
@@ -275,7 +311,7 @@ export default function AdminServiceListPage() {
           </Card>
         </Col>
         <Col md={6} lg={3}>
-          <Card 
+          <Card
             className="border-0"
             style={{
               backgroundColor: "white",
@@ -301,10 +337,22 @@ export default function AdminServiceListPage() {
                 ></i>
               </div>
               <div>
-                <div style={{ fontSize: "13px", color: "#64748b", fontWeight: "600" }}>
+                <div
+                  style={{
+                    fontSize: "13px",
+                    color: "#64748b",
+                    fontWeight: "600",
+                  }}
+                >
                   Còn hàng
                 </div>
-                <div style={{ fontSize: "24px", fontWeight: "700", color: "#1e293b" }}>
+                <div
+                  style={{
+                    fontSize: "24px",
+                    fontWeight: "700",
+                    color: "#1e293b",
+                  }}
+                >
                   11
                 </div>
               </div>
@@ -316,7 +364,7 @@ export default function AdminServiceListPage() {
       {/* Filters */}
       <Row className="g-3 mb-5">
         <Col md={4}>
-          <Form.Select 
+          <Form.Select
             className="admin-filter-control"
             style={{
               borderColor: "#e2e8f0",
@@ -335,7 +383,7 @@ export default function AdminServiceListPage() {
           </Form.Select>
         </Col>
         <Col md={4}>
-          <Form.Select 
+          <Form.Select
             className="admin-filter-control"
             style={{
               borderColor: "#e2e8f0",
@@ -353,7 +401,7 @@ export default function AdminServiceListPage() {
           </Form.Select>
         </Col>
         <Col md={4}>
-          <div 
+          <div
             className="admin-search-wrap"
             style={{
               position: "relative",
@@ -361,7 +409,7 @@ export default function AdminServiceListPage() {
               alignItems: "center",
             }}
           >
-            <i 
+            <i
               className="bi bi-search"
               style={{
                 position: "absolute",
@@ -369,7 +417,7 @@ export default function AdminServiceListPage() {
                 color: "#94a3b8",
               }}
             ></i>
-            <input 
+            <input
               placeholder="Tìm kiếm dịch vụ..."
               style={{
                 width: "100%",
@@ -388,7 +436,7 @@ export default function AdminServiceListPage() {
       <Row className="g-4">
         {services.map((service, idx) => (
           <Col xl={3} lg={4} md={6} key={idx}>
-            <Card 
+            <Card
               className="border-0 h-100"
               style={{
                 backgroundColor: "white",
@@ -399,22 +447,24 @@ export default function AdminServiceListPage() {
                 cursor: "pointer",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.12)";
+                e.currentTarget.style.boxShadow =
+                  "0 8px 16px rgba(0, 0, 0, 0.12)";
                 e.currentTarget.style.transform = "translateY(-4px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = "0 1px 3px rgba(0, 0, 0, 0.08)";
+                e.currentTarget.style.boxShadow =
+                  "0 1px 3px rgba(0, 0, 0, 0.08)";
                 e.currentTarget.style.transform = "none";
               }}
             >
-              <div 
+              <div
                 className="p-3 d-flex justify-content-between align-items-start"
                 style={{
                   borderBottom: "1px solid #f1f5f9",
                   backgroundColor: "#f8fafc",
                 }}
               >
-                <Badge 
+                <Badge
                   className="fw-semibold"
                   style={{
                     backgroundColor: "#eff6ff",
@@ -433,12 +483,15 @@ export default function AdminServiceListPage() {
                     data-bs-toggle="dropdown"
                     style={{ textDecoration: "none" }}
                   >
-                    <i className="bi bi-three-dots-vertical" style={{ fontSize: "16px" }}></i>
+                    <i
+                      className="bi bi-three-dots-vertical"
+                      style={{ fontSize: "16px" }}
+                    ></i>
                   </button>
                   <ul className="dropdown-menu dropdown-menu-end">
                     <li>
-                      <a 
-                        className="dropdown-item" 
+                      <a
+                        className="dropdown-item"
                         href="#edit"
                         style={{ fontSize: "13px" }}
                       >
@@ -446,8 +499,8 @@ export default function AdminServiceListPage() {
                       </a>
                     </li>
                     <li>
-                      <a 
-                        className="dropdown-item text-danger" 
+                      <a
+                        className="dropdown-item text-danger"
                         href="#delete"
                         style={{ fontSize: "13px" }}
                       >
@@ -458,7 +511,7 @@ export default function AdminServiceListPage() {
                 </div>
               </div>
 
-              <div 
+              <div
                 className="d-flex justify-content-center align-items-center p-4"
                 style={{
                   fontSize: "48px",
@@ -470,26 +523,40 @@ export default function AdminServiceListPage() {
               </div>
 
               <Card.Body className="p-4">
-                <h5 
+                <h5
                   className="fw-bold mb-2"
-                  style={{ fontSize: "16px", color: "#1e293b", lineHeight: "1.3" }}
+                  style={{
+                    fontSize: "16px",
+                    color: "#1e293b",
+                    lineHeight: "1.3",
+                  }}
                 >
                   {service.name}
                 </h5>
-                <div 
+                <div
                   className="text-secondary fw-normal small mb-4"
-                  style={{ fontSize: "13px", color: "#64748b", lineHeight: "1.4" }}
+                  style={{
+                    fontSize: "13px",
+                    color: "#64748b",
+                    lineHeight: "1.4",
+                  }}
                 >
                   {service.desc}
                 </div>
 
-                <div 
+                <div
                   className="mb-4 pb-4"
                   style={{
                     borderBottom: "1px solid #f1f5f9",
                   }}
                 >
-                  <div style={{ fontSize: "12px", color: "#94a3b8", marginBottom: "4px" }}>
+                  <div
+                    style={{
+                      fontSize: "12px",
+                      color: "#94a3b8",
+                      marginBottom: "4px",
+                    }}
+                  >
                     Giá
                   </div>
                   <div
@@ -502,22 +569,38 @@ export default function AdminServiceListPage() {
 
                 <div className="d-flex justify-content-between align-items-center">
                   <div>
-                    <div style={{ fontSize: "12px", color: "#94a3b8", marginBottom: "4px" }}>
+                    <div
+                      style={{
+                        fontSize: "12px",
+                        color: "#94a3b8",
+                        marginBottom: "4px",
+                      }}
+                    >
                       Số lượng
                     </div>
-                    <div style={{ fontWeight: "700", color: "#1e293b", fontSize: "16px" }}>
+                    <div
+                      style={{
+                        fontWeight: "700",
+                        color: "#1e293b",
+                        fontSize: "16px",
+                      }}
+                    >
                       {service.quantity}
                     </div>
                   </div>
-                  <div 
+                  <div
                     className="fw-semibold text-end"
                     style={{
                       fontSize: "12px",
-                      color: service.statusClass === "text-success" ? "#10b981" : "#ef4444",
+                      color:
+                        service.statusClass === "text-success"
+                          ? "#10b981"
+                          : "#ef4444",
                     }}
                   >
                     <div>
-                      {service.statusClass === "text-success" ? "✓" : "✕"} {service.status}
+                      {service.statusClass === "text-success" ? "✓" : "✕"}{" "}
+                      {service.status}
                     </div>
                   </div>
                 </div>

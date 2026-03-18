@@ -73,11 +73,6 @@ export default function AdminSidebar({ user, onLogout }) {
           icon: "bi-graph-up-arrow",
           label: "Báo cáo Doanh thu",
         },
-        {
-          path: "/admin-dashboard/analytics",
-          icon: "bi-bar-chart",
-          label: "Công suất & Sử dụng",
-        },
       ],
     },
     {
@@ -156,7 +151,7 @@ export default function AdminSidebar({ user, onLogout }) {
   const menuSections = isAdmin ? adminMenuSections : staffMenuSections;
 
   return (
-    <div 
+    <div
       className="admin-sidebar d-flex flex-column"
       style={{
         width: "280px",
@@ -169,7 +164,7 @@ export default function AdminSidebar({ user, onLogout }) {
       {/* Logo */}
       <div className="sidebar-header px-4 py-5">
         <Link to="/" className="d-flex align-items-center text-decoration-none">
-          <div 
+          <div
             className="logo-icon me-3 d-flex align-items-center justify-content-center rounded-lg"
             style={{
               width: "48px",
@@ -178,10 +173,13 @@ export default function AdminSidebar({ user, onLogout }) {
               transition: "transform 0.2s",
             }}
           >
-            <i className="bi bi-cup-hot-fill text-dark" style={{ fontSize: "24px" }}></i>
+            <i
+              className="bi bi-cup-hot-fill text-dark"
+              style={{ fontSize: "24px" }}
+            ></i>
           </div>
           <div>
-            <div 
+            <div
               className="fw-bold lh-1"
               style={{ fontSize: "16px", color: "white" }}
             >
@@ -198,7 +196,7 @@ export default function AdminSidebar({ user, onLogout }) {
       <Nav className="flex-column flex-grow-1 px-2 py-2 sidebar-nav">
         {menuSections.map((section, idx) => (
           <div key={idx} className="mb-4">
-            <div 
+            <div
               className="sidebar-section-title px-4 mb-3"
               style={{
                 fontSize: "11px",
@@ -218,15 +216,20 @@ export default function AdminSidebar({ user, onLogout }) {
                 className={`sidebar-item d-flex align-items-center px-4 py-3 rounded-lg mb-1`}
                 style={{
                   color: isActive(item.path) ? "#fbbf24" : "#cbd5e1",
-                  backgroundColor: isActive(item.path) ? "rgba(251, 191, 36, 0.1)" : "transparent",
+                  backgroundColor: isActive(item.path)
+                    ? "rgba(251, 191, 36, 0.1)"
+                    : "transparent",
                   transition: "all 0.2s ease",
-                  borderLeft: isActive(item.path) ? "3px solid #fbbf24" : "3px solid transparent",
+                  borderLeft: isActive(item.path)
+                    ? "3px solid #fbbf24"
+                    : "3px solid transparent",
                   cursor: "pointer",
                   textDecoration: "none",
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive(item.path)) {
-                    e.currentTarget.style.backgroundColor = "rgba(203, 213, 225, 0.08)";
+                    e.currentTarget.style.backgroundColor =
+                      "rgba(203, 213, 225, 0.08)";
                     e.currentTarget.style.color = "#f1f5f9";
                   }
                 }}
@@ -237,19 +240,21 @@ export default function AdminSidebar({ user, onLogout }) {
                   }
                 }}
               >
-                <i 
+                <i
                   className={`bi ${item.icon}`}
-                  style={{ 
-                    marginRight: "12px", 
+                  style={{
+                    marginRight: "12px",
                     fontSize: "16px",
                     color: isActive(item.path) ? "#fbbf24" : "inherit",
                   }}
                 ></i>
-                <span className="flex-grow-1" style={{ fontSize: "14px" }}>{item.label}</span>
+                <span className="flex-grow-1" style={{ fontSize: "14px" }}>
+                  {item.label}
+                </span>
                 {item.badge && (
-                  <Badge 
-                    bg="danger" 
-                    pill 
+                  <Badge
+                    bg="danger"
+                    pill
                     className="ms-2"
                     style={{ fontSize: "11px", padding: "2px 8px" }}
                   >
@@ -283,21 +288,24 @@ export default function AdminSidebar({ user, onLogout }) {
               e.currentTarget.style.color = "#cbd5e1";
             }}
           >
-            <i className="bi bi-box-arrow-right" style={{ marginRight: "12px", fontSize: "16px" }}></i>
+            <i
+              className="bi bi-box-arrow-right"
+              style={{ marginRight: "12px", fontSize: "16px" }}
+            ></i>
             <span style={{ fontSize: "14px" }}>Đăng xuất</span>
           </Nav.Link>
         </div>
       </Nav>
 
       {/* User Profile */}
-      <div 
+      <div
         className="sidebar-footer px-4 py-4 border-top"
         style={{
           borderTopColor: "#334155",
         }}
       >
         <div className="d-flex align-items-center">
-          <div 
+          <div
             className="rounded-circle d-flex align-items-center justify-content-center fw-bold"
             style={{
               width: "40px",
@@ -317,7 +325,7 @@ export default function AdminSidebar({ user, onLogout }) {
               .toUpperCase()}
           </div>
           <div className="flex-grow-1 overflow-hidden">
-            <div 
+            <div
               className="fw-600 text-truncate"
               style={{ fontSize: "14px", color: "white" }}
             >

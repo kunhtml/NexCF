@@ -37,10 +37,13 @@ export default function AdminLayout({ children }) {
   };
 
   return (
-    <div className="admin-layout d-flex min-vh-100" style={{ backgroundColor: "#f8f9fa" }}>
+    <div
+      className="admin-layout d-flex min-vh-100"
+      style={{ backgroundColor: "#f8f9fa" }}
+    >
       <AdminSidebar user={user} onLogout={handleLogout} />
       <div className="admin-main flex-grow-1 d-flex flex-column">
-        <header 
+        <header
           className="admin-header border-bottom d-flex align-items-center justify-content-between px-5 py-3"
           style={{
             backgroundColor: "white",
@@ -49,7 +52,7 @@ export default function AdminLayout({ children }) {
           }}
         >
           <div className="d-flex align-items-center gap-2">
-            <button 
+            <button
               className="btn btn-sm rounded-circle"
               style={{
                 backgroundColor: "#f0f2f5",
@@ -59,21 +62,23 @@ export default function AdminLayout({ children }) {
                 border: "none",
                 transition: "all 0.2s",
               }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = "#e2e6eb"}
-              onMouseLeave={(e) => e.target.style.backgroundColor = "#f0f2f5"}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#e2e6eb")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "#f0f2f5")}
             >
               <i className="bi bi-search"></i>
             </button>
           </div>
 
           <div className="d-flex align-items-center gap-3">
-            <div style={{ 
-              width: "1px", 
-              height: "24px", 
-              backgroundColor: "#dee2e6"
-            }}></div>
-            
-            <button 
+            <div
+              style={{
+                width: "1px",
+                height: "24px",
+                backgroundColor: "#dee2e6",
+              }}
+            ></div>
+
+            <button
               className="btn btn-sm rounded-circle position-relative"
               style={{
                 backgroundColor: "#f0f2f5",
@@ -83,13 +88,13 @@ export default function AdminLayout({ children }) {
                 border: "none",
                 transition: "all 0.2s",
               }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = "#e2e6eb"}
-              onMouseLeave={(e) => e.target.style.backgroundColor = "#f0f2f5"}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "#e2e6eb")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "#f0f2f5")}
             >
               <i className="bi bi-bell"></i>
               <span
                 className="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger"
-                style={{ 
+                style={{
                   fontSize: "0.5rem",
                   padding: "2px 4px",
                 }}
@@ -110,15 +115,22 @@ export default function AdminLayout({ children }) {
                   justifyContent: "center",
                 }}
               >
-                <i className="bi bi-person-fill" style={{ fontSize: "18px", color: "#6c757d" }}></i>
+                <i
+                  className="bi bi-person-fill"
+                  style={{ fontSize: "18px", color: "#6c757d" }}
+                ></i>
               </div>
               <div style={{ fontSize: "13px" }}>
-                <div style={{ fontWeight: "600", color: "#212529" }}>{user?.fullName || "Admin"}</div>
-                <div style={{ color: "#6c757d", fontSize: "12px" }}>{user?.role}</div>
+                <div style={{ fontWeight: "600", color: "#212529" }}>
+                  {user?.fullName || "Admin"}
+                </div>
+                <div style={{ color: "#6c757d", fontSize: "12px" }}>
+                  {user?.role}
+                </div>
               </div>
             </div>
 
-            <button 
+            <button
               className="btn btn-sm rounded-circle"
               style={{
                 backgroundColor: "#f0f2f5",
@@ -137,7 +149,7 @@ export default function AdminLayout({ children }) {
                 e.target.style.backgroundColor = "#f0f2f5";
                 e.target.style.color = "#6c757d";
               }}
-               title="Đăng xuất"
+              title="Đăng xuất"
             >
               <i className="bi bi-box-arrow-right"></i>
             </button>

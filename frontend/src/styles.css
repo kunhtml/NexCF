@@ -103,7 +103,7 @@ body {
 
 .admin-sidebar {
   width: 260px;
-  background: linear-gradient(180deg, #4c1d95 0%, #5b21b6 50%, #6d28d9 100%);
+  background: linear-gradient(180deg, #120a3b 0%, #1a1454 50%, #332f8f 100%);
   color: white;
   position: sticky;
   top: 0;
@@ -151,9 +151,10 @@ body {
 }
 
 .sidebar-item.active {
-  background: rgba(255, 255, 255, 0.15) !important;
+  background: rgba(99, 102, 241, 0.35) !important;
   color: white !important;
   font-weight: 500;
+  border-left: 3px solid #93c5fd;
 }
 
 .sidebar-item i {
@@ -175,6 +176,12 @@ body {
   font-size: 1rem;
 }
 
+.sidebar-item .badge {
+  font-size: 0.65rem;
+  background: #ef4444 !important;
+  color: #fff;
+}
+
 .sidebar-footer {
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
@@ -189,6 +196,232 @@ body {
   top: 0;
   z-index: 100;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.staff-header-icon {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  border: 0;
+}
+
+.staff-panel-card {
+  border-radius: 14px;
+}
+
+.staff-stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.staff-table thead th {
+  font-size: 0.75rem;
+  color: #6b7280;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+  letter-spacing: 0.03em;
+}
+
+.staff-table tbody td {
+  border-color: #eef2f7;
+}
+
+.staff-notify-item:last-child {
+  border-bottom: 0 !important;
+}
+
+.staff-notify-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.staff-primary-btn,
+.staff-secondary-btn {
+  border: 0;
+  border-radius: 10px;
+  font-weight: 700;
+  padding: 10px 16px;
+}
+
+.staff-primary-btn {
+  background: #13b67a;
+  color: #fff;
+}
+
+.staff-secondary-btn {
+  background: #5e5ce6;
+  color: #fff;
+}
+
+.staff-filter-control {
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-weight: 600;
+  color: #475569;
+}
+
+.staff-search-wrap {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  padding: 8px 12px;
+  color: #64748b;
+}
+
+.staff-search-wrap input {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  font-weight: 600;
+  color: #334155;
+}
+
+.staff-booking-card {
+  border-radius: 14px;
+  border-left-width: 4px !important;
+  border-left-style: solid !important;
+}
+
+.staff-booking-info {
+  background: #f1f5f9;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.staff-booking-info > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.staff-booking-info > div:last-child {
+  margin-bottom: 0;
+}
+
+.staff-booking-info span {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.staff-booking-info strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.staff-accent-danger {
+  border-left-color: #ef4444;
+}
+
+.staff-accent-warning {
+  border-left-color: #f59e0b;
+}
+
+.staff-accent-primary {
+  border-left-color: #6366f1;
+}
+
+.staff-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.staff-dot-green { background: #10b981; }
+.staff-dot-red { background: #ef4444; }
+.staff-dot-yellow { background: #f59e0b; }
+.staff-dot-blue { background: #3b82f6; }
+
+.staff-seat-card {
+  border-radius: 14px;
+  min-height: 205px;
+}
+
+.staff-seat-green { border-color: #10b981 !important; }
+.staff-seat-red { border-color: #ef4444 !important; }
+.staff-seat-yellow { border-color: #f59e0b !important; }
+.staff-seat-blue { border-color: #3b82f6 !important; }
+
+.staff-seat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #64748b;
+}
+
+.staff-seat-badge {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.staff-icon-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 0;
+  background: #dbeafe;
+  color: #3b82f6;
+}
+
+.staff-icon-btn-success {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.staff-chip {
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #fff;
+  color: #475569;
+  font-weight: 700;
+  padding: 6px 14px;
+}
+
+.staff-chip.active {
+  background: #5e5ce6;
+  color: #fff;
+  border-color: #5e5ce6;
+}
+
+.staff-service-card,
+.staff-menu-card {
+  border-radius: 14px;
+}
+
+.staff-service-thumb {
+  background: #e2e8f0;
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+}
+
+.staff-price-badge {
+  background: #5e5ce6;
+  border: 0;
 }
 
 .admin-content {

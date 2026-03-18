@@ -98,7 +98,7 @@ export default function Register() {
         fullName.trim(),
         email.trim().toLowerCase(),
         phone.trim() || null,
-        password
+        password,
       );
 
       setSuccess("Đăng ký thành công! Đang chuyển hướng...");
@@ -163,7 +163,10 @@ export default function Register() {
                 <Card.Body className="p-5">
                   {/* Header */}
                   <div className="text-center mb-5">
-                    <div className="mb-4 register-header-item" style={{ opacity: 0 }}>
+                    <div
+                      className="mb-4 register-header-item"
+                      style={{ opacity: 0 }}
+                    >
                       <i
                         className="bi bi-person-plus-fill"
                         style={{ fontSize: "2.5rem", color: "#6366f1" }}
@@ -203,8 +206,14 @@ export default function Register() {
 
                   <Form onSubmit={handleSubmit}>
                     {/* Full Name */}
-                    <Form.Group className="mb-3 register-form-item" style={{ opacity: 0 }}>
-                      <Form.Label className="fw-bold mb-2" style={{ color: "#1f2937" }}>
+                    <Form.Group
+                      className="mb-3 register-form-item"
+                      style={{ opacity: 0 }}
+                    >
+                      <Form.Label
+                        className="fw-bold mb-2"
+                        style={{ color: "#1f2937" }}
+                      >
                         Họ và tên <span style={{ color: "#ef4444" }}>*</span>
                       </Form.Label>
                       <Form.Control
@@ -222,8 +231,14 @@ export default function Register() {
                     </Form.Group>
 
                     {/* Email */}
-                    <Form.Group className="mb-3 register-form-item" style={{ opacity: 0 }}>
-                      <Form.Label className="fw-bold mb-2" style={{ color: "#1f2937" }}>
+                    <Form.Group
+                      className="mb-3 register-form-item"
+                      style={{ opacity: 0 }}
+                    >
+                      <Form.Label
+                        className="fw-bold mb-2"
+                        style={{ color: "#1f2937" }}
+                      >
                         Email <span style={{ color: "#ef4444" }}>*</span>
                       </Form.Label>
                       <Form.Control
@@ -241,8 +256,14 @@ export default function Register() {
                     </Form.Group>
 
                     {/* Phone */}
-                    <Form.Group className="mb-3 register-form-item" style={{ opacity: 0 }}>
-                      <Form.Label className="fw-bold mb-2" style={{ color: "#1f2937" }}>
+                    <Form.Group
+                      className="mb-3 register-form-item"
+                      style={{ opacity: 0 }}
+                    >
+                      <Form.Label
+                        className="fw-bold mb-2"
+                        style={{ color: "#1f2937" }}
+                      >
                         Số điện thoại
                       </Form.Label>
                       <Form.Control
@@ -260,8 +281,14 @@ export default function Register() {
                     </Form.Group>
 
                     {/* Password */}
-                    <Form.Group className="mb-3 register-form-item" style={{ opacity: 0 }}>
-                      <Form.Label className="fw-bold mb-2" style={{ color: "#1f2937" }}>
+                    <Form.Group
+                      className="mb-3 register-form-item"
+                      style={{ opacity: 0 }}
+                    >
+                      <Form.Label
+                        className="fw-bold mb-2"
+                        style={{ color: "#1f2937" }}
+                      >
                         Mật khẩu <span style={{ color: "#ef4444" }}>*</span>
                       </Form.Label>
                       <Form.Control
@@ -279,9 +306,16 @@ export default function Register() {
                     </Form.Group>
 
                     {/* Confirm Password */}
-                    <Form.Group className="mb-3 register-form-item" style={{ opacity: 0 }}>
-                      <Form.Label className="fw-bold mb-2" style={{ color: "#1f2937" }}>
-                        Xác nhận mật khẩu <span style={{ color: "#ef4444" }}>*</span>
+                    <Form.Group
+                      className="mb-3 register-form-item"
+                      style={{ opacity: 0 }}
+                    >
+                      <Form.Label
+                        className="fw-bold mb-2"
+                        style={{ color: "#1f2937" }}
+                      >
+                        Xác nhận mật khẩu{" "}
+                        <span style={{ color: "#ef4444" }}>*</span>
                       </Form.Label>
                       <Form.Control
                         type="password"
@@ -298,7 +332,10 @@ export default function Register() {
                     </Form.Group>
 
                     {/* Terms & Conditions */}
-                    <Form.Group className="mb-4 register-form-item" style={{ opacity: 0 }}>
+                    <Form.Group
+                      className="mb-4 register-form-item"
+                      style={{ opacity: 0 }}
+                    >
                       <Form.Check
                         type="checkbox"
                         label={
@@ -310,8 +347,8 @@ export default function Register() {
                               style={{ color: "#6366f1" }}
                             >
                               điều khoản sử dụng
-                            </Link>
-                            {" "}và{" "}
+                            </Link>{" "}
+                            và{" "}
                             <Link
                               to="#"
                               className="text-decoration-none fw-bold"
@@ -347,7 +384,10 @@ export default function Register() {
                     </Button>
 
                     {/* Login Link */}
-                    <div className="text-center register-form-item" style={{ opacity: 0 }}>
+                    <div
+                      className="text-center register-form-item"
+                      style={{ opacity: 0 }}
+                    >
                       <p className="text-muted small mb-0">
                         Đã có tài khoản?{" "}
                         <Link

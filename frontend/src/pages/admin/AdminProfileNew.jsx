@@ -379,7 +379,7 @@ export default function AdminProfile() {
                         variant="outline-warning"
                         size="sm"
                         className="w-100"
-                        href="/admin/password"
+                        href="/dashboard/password"
                       >
                         <i className="bi bi-key me-2"></i>
                         Đổi mật khẩu

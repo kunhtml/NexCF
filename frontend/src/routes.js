@@ -11,16 +11,17 @@ export default [
 
   // Customer pages
   route("order-table", "pages/customer/BookingPageNew.jsx"),
-  route("dashboard", "pages/customer/OrderHistory.jsx"),
+  route("dashboard", "pages/shared/DashboardEntry.jsx"),
   route("profile", "pages/customer/Profile.jsx"),
 
-  // Admin pages
-  route("admin", "pages/admin/AdminDashboard.jsx"),
-  route("admin/menu", "pages/admin/AdminPage.jsx"),
-  route("admin/tables", "pages/admin/AdminTablesNew.jsx"),
-  route("admin/users", "pages/admin/AdminUsers.jsx"),
-  route("admin/reports", "pages/admin/ReportAnalyticsPage.jsx"),
-  route("admin/analytics", "pages/admin/AdminAnalytics.jsx"),
-  route("admin/profile", "pages/admin/AdminProfileNew.jsx"),
-  route("admin/password", "pages/admin/AdminPassword.jsx"),
+  // Staff/Admin pages
+  route("dashboard/checkin", "pages/staff/StaffCheckinPage.jsx"),
+  route("dashboard/tables", "pages/staff/StaffSeatMapPage.jsx"),
+  route("dashboard/orders", "pages/staff/StaffOrderManagementPage.jsx"),
+  route("dashboard/create-service", "pages/staff/StaffCreateServicePage.jsx"),
+  route("dashboard/services", "pages/staff/StaffServiceListPage.jsx"),
+  route("dashboard/profile", "pages/admin/AdminProfileNew.jsx"),
+  route("dashboard/password", "pages/admin/AdminPassword.jsx"),
+
+  route("admin", "pages/shared/AdminToDashboard.jsx"),
 ];

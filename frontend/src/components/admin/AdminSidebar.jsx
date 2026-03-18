@@ -5,55 +5,66 @@ export default function AdminSidebar({ user, onLogout }) {
   const location = useLocation();
 
   const isActive = (path) => {
-    if (path === "/admin") {
-      return location.pathname === "/admin";
+    if (path === "/dashboard") {
+      return location.pathname === "/dashboard" || location.pathname === "/admin";
     }
-    return location.pathname.startsWith(path);
+
+    if (location.pathname.startsWith(path)) {
+      return true;
+    }
+
+    if (path.startsWith("/dashboard/")) {
+      const adminAlias = path.replace("/dashboard/", "/admin/");
+      return location.pathname.startsWith(adminAlias);
+    }
+
+    return false;
   };
 
   const menuSections = [
     {
       title: "TỔNG QUAN",
-      items: [{ path: "/admin", icon: "bi-grid-fill", label: "Dashboard" }],
+      items: [{ path: "/dashboard", icon: "bi-grid", label: "Dashboard" }],
     },
     {
-      title: "QUẢN LÝ NGƯỜI DÙNG",
+      title: "CHECK-IN / CHECK-OUT",
       items: [
         {
-          path: "/admin/users",
-          icon: "bi-people-fill",
-          label: "Quản lý Users",
-          badge: 12,
+          path: "/dashboard/checkin",
+          icon: "bi-clipboard-check",
+          label: "Check-in đơn",
+          badge: 3,
         },
       ],
     },
     {
-      title: "DỮ LIỆU HỆ THỐNG",
+      title: "QUẢN LÝ KHÔNG GIAN",
       items: [
         {
-          path: "/admin/menu",
-          icon: "bi-cup-hot-fill",
-          label: "Quản lý Dịch vụ",
-        },
-        {
-          path: "/admin/tables",
-          icon: "bi-building",
-          label: "Quản lý Không gian",
+          path: "/dashboard/tables",
+          icon: "bi-map",
+          label: "Sơ đồ chỗ ngồi",
         },
       ],
     },
     {
-      title: "BÁO CÁO & THỐNG KÊ",
+      title: "ĐƠN HÀNG & DỊCH VỤ",
       items: [
         {
-          path: "/admin/reports",
-          icon: "bi-bar-chart-fill",
-          label: "Báo cáo Doanh thu",
+          path: "/dashboard/orders",
+          icon: "bi-receipt",
+          label: "Quản lý đơn hàng",
+          badge: 5,
         },
         {
-          path: "/admin/analytics",
-          icon: "bi-graph-up",
-          label: "Công suất & Sử dụng",
+          path: "/dashboard/create-service",
+          icon: "bi-plus-circle",
+          label: "Tạo đơn dịch vụ",
+        },
+        {
+          path: "/dashboard/services",
+          icon: "bi-book",
+          label: "Danh sách dịch vụ",
         },
       ],
     },
@@ -61,11 +72,15 @@ export default function AdminSidebar({ user, onLogout }) {
       title: "TÀI KHOẢN",
       items: [
         {
-          path: "/admin/profile",
-          icon: "bi-person-fill",
+          path: "/dashboard/profile",
+          icon: "bi-person-circle",
           label: "Hồ sơ cá nhân",
         },
-        { path: "/admin/password", icon: "bi-key-fill", label: "Đổi mật khẩu" },
+        {
+          path: "/dashboard/password",
+          icon: "bi-key-fill",
+          label: "Đổi mật khẩu",
+        },
       ],
     },
   ];
@@ -80,7 +95,7 @@ export default function AdminSidebar({ user, onLogout }) {
           </div>
           <div>
             <div className="text-white fw-bold">StudySpace</div>
-            <small className="text-muted-light">CSMS • Admin Panel</small>
+            <small className="text-muted-light">CSMS • Staff Panel</small>
           </div>
         </Link>
       </div>
@@ -130,15 +145,22 @@ export default function AdminSidebar({ user, onLogout }) {
       <div className="sidebar-footer px-3 py-3 border-top border-secondary">
         <div className="d-flex align-items-center">
           <div className="user-avatar me-3">
-            <div className="avatar-circle bg-danger text-white d-flex align-items-center justify-content-center rounded-circle fw-bold">
-              AM
+            <div className="avatar-circle bg-primary text-white d-flex align-items-center justify-content-center rounded-circle fw-bold">
+              {(user?.fullName || "NV")
+                .split(" ")
+                .slice(-2)
+                .map((part) => part[0])
+                .join("")
+                .toUpperCase()}
             </div>
           </div>
           <div className="flex-grow-1 overflow-hidden">
             <div className="text-white fw-medium text-truncate">
-              {user?.fullName || "Admin Master"}
+              {user?.fullName || "Nhân viên"}
             </div>
-            <small className="text-muted-light">Quản trị viên</small>
+            <small className="text-muted-light">
+              {user?.role === "Admin" ? "Quản trị viên" : "Nhân viên quầy"}
+            </small>
           </div>
         </div>
       </div>

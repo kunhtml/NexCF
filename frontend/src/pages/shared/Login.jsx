@@ -133,7 +133,10 @@ export default function Login() {
                 <Card.Body className="p-5">
                   {/* Header */}
                   <div className="text-center mb-5">
-                    <div className="mb-4 login-header-item" style={{ opacity: 0 }}>
+                    <div
+                      className="mb-4 login-header-item"
+                      style={{ opacity: 0 }}
+                    >
                       <i
                         className="bi bi-cup-hot-fill"
                         style={{ fontSize: "2.5rem", color: "#6366f1" }}
@@ -173,8 +176,14 @@ export default function Login() {
 
                   <Form onSubmit={handleSubmit}>
                     {/* Email/Phone */}
-                    <Form.Group className="mb-4 login-form-item" style={{ opacity: 0 }}>
-                      <Form.Label className="fw-bold mb-2" style={{ color: "#1f2937" }}>
+                    <Form.Group
+                      className="mb-4 login-form-item"
+                      style={{ opacity: 0 }}
+                    >
+                      <Form.Label
+                        className="fw-bold mb-2"
+                        style={{ color: "#1f2937" }}
+                      >
                         Email hoặc Số điện thoại
                       </Form.Label>
                       <Form.Control
@@ -192,9 +201,15 @@ export default function Login() {
                     </Form.Group>
 
                     {/* Password */}
-                    <Form.Group className="mb-4 login-form-item" style={{ opacity: 0 }}>
+                    <Form.Group
+                      className="mb-4 login-form-item"
+                      style={{ opacity: 0 }}
+                    >
                       <div className="d-flex justify-content-between align-items-center mb-2">
-                        <Form.Label className="fw-bold mb-0" style={{ color: "#1f2937" }}>
+                        <Form.Label
+                          className="fw-bold mb-0"
+                          style={{ color: "#1f2937" }}
+                        >
                           Mật khẩu
                         </Form.Label>
                         <Link
@@ -220,7 +235,10 @@ export default function Login() {
                     </Form.Group>
 
                     {/* Remember Me */}
-                    <Form.Group className="mb-4 login-form-item" style={{ opacity: 0 }}>
+                    <Form.Group
+                      className="mb-4 login-form-item"
+                      style={{ opacity: 0 }}
+                    >
                       <Form.Check
                         type="checkbox"
                         label="Ghi nhớ đăng nhập"
@@ -247,7 +265,10 @@ export default function Login() {
                     </Button>
 
                     {/* Sign Up Link */}
-                    <div className="text-center login-form-item" style={{ opacity: 0 }}>
+                    <div
+                      className="text-center login-form-item"
+                      style={{ opacity: 0 }}
+                    >
                       <p className="text-muted small mb-0">
                         Chưa có tài khoản?{" "}
                         <Link

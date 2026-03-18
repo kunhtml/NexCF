@@ -41,29 +41,48 @@ export default function AuthNavActions({
         <Dropdown align="end">
           <Dropdown.Toggle
             variant="outline-secondary"
-            className="px-3 rounded-0 fw-medium text-light border-secondary d-flex align-items-center gap-2"
-            style={{ backgroundColor: "transparent" }}
+            className="px-3 py-2 rounded-1 fw-medium text-light border-secondary d-flex align-items-center gap-2"
+            style={{ backgroundColor: "rgba(255, 255, 255, 0.04)" }}
           >
-            <i
-              className={`bi ${roleMeta.icon ?? "bi-person-circle"}`}
-              style={{ color: roleMeta.color ?? "#aaa" }}
-            ></i>
-            <span>{displayName || user.fullName}</span>
-            <Badge
-              pill
+            <span
+              className="d-inline-flex align-items-center justify-content-center rounded-circle border border-secondary"
               style={{
-                backgroundColor: roleMeta.color ?? "#aaa",
-                color: "#000",
-                fontSize: "0.65rem",
+                width: "30px",
+                height: "30px",
+                flexShrink: 0,
               }}
             >
-              {roleMeta.label ?? role}
-            </Badge>
+              <i
+                className={`bi ${roleMeta.icon ?? "bi-person-circle"}`}
+                style={{ color: roleMeta.color ?? "#aaa" }}
+              ></i>
+            </span>
+            <span className="d-flex flex-column align-items-start lh-sm me-1">
+              <span className="small text-secondary">Tài khoản</span>
+              <span className="fw-semibold text-truncate" style={{ maxWidth: "140px" }}>
+                {displayName || user.fullName}
+              </span>
+            </span>
           </Dropdown.Toggle>
           <Dropdown.Menu
             className="bg-dark border-secondary"
             style={{ minWidth: "180px" }}
           >
+            <div className="px-3 py-2 border-bottom border-secondary-subtle">
+              <div className="text-light fw-semibold small text-truncate">
+                {displayName || user.fullName}
+              </div>
+              <Badge
+                pill
+                style={{
+                  backgroundColor: roleMeta.color ?? "#aaa",
+                  color: "#000",
+                  fontSize: "0.65rem",
+                }}
+              >
+                {roleMeta.label ?? role}
+              </Badge>
+            </div>
             {dashboardPath && (
               <Dropdown.Item
                 as={Link}

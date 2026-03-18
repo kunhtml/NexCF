@@ -33,103 +33,167 @@ export default function AdminAnalytics() {
     <AdminLayout>
       <div>
         {/* Header */}
-        <div className="mb-4">
-          <h2 className="fw-bold mb-1">
-            <i className="bi bi-graph-up me-2 text-primary"></i>
+        <div className="mb-5 pb-3">
+          <h1 
+            className="fw-bold mb-2"
+            style={{ fontSize: "28px", color: "#1e293b" }}
+          >
+            <i className="bi bi-graph-up me-2" style={{ color: "#3b82f6" }}></i>
             Công suất & Sử dụng
-          </h2>
-          <p className="text-muted mb-0">
+          </h1>
+          <p 
+            className="mb-0"
+            style={{ fontSize: "15px", color: "#64748b" }}
+          >
             Phân tích hiệu suất và mức độ sử dụng không gian
           </p>
         </div>
 
         {/* Key Metrics */}
-        <Row className="g-4 mb-4">
-          <Col lg={3} md={6}>
-            <Card className="border-0 shadow-sm h-100">
-              <Card.Body className="text-center">
-                <div
-                  className="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
-                  style={{ width: "60px", height: "60px" }}
-                >
-                  <i className="bi bi-speedometer2 fs-4 text-primary"></i>
+        <Row className="g-4 mb-5">
+          <Col lg={6} md={12}>
+            <Card 
+              className="border-0 h-100"
+              style={{
+                backgroundColor: "white",
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
+                borderRadius: "12px",
+                overflow: "hidden",
+              }}
+            >
+              <Card.Body className="p-4">
+                <div className="d-flex align-items-center justify-content-between mb-3">
+                  <div>
+                    <div style={{ fontSize: "13px", color: "#64748b", fontWeight: "600" }}>
+                      Tỷ lệ sử dụng
+                    </div>
+                    <div style={{ fontSize: "36px", fontWeight: "700", color: "#3b82f6", marginTop: "8px" }}>
+                      {analytics.occupancyRate}%
+                    </div>
+                  </div>
+                  <div 
+                    style={{
+                      width: "80px",
+                      height: "80px",
+                      borderRadius: "50%",
+                      background: `conic-gradient(#3b82f6 ${analytics.occupancyRate * 3.6}deg, #e2e8f0 0deg)`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "68px",
+                        height: "68px",
+                        borderRadius: "50%",
+                        backgroundColor: "white",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#3b82f6",
+                        fontWeight: "700",
+                        fontSize: "18px",
+                      }}
+                    >
+                      {analytics.occupancyRate}%
+                    </div>
+                  </div>
                 </div>
-                <h3 className="fw-bold text-primary mb-1">
-                  {analytics.occupancyRate}%
-                </h3>
-                <p className="text-muted mb-0">Tỷ lệ sử dụng</p>
+                <div style={{ fontSize: "13px", color: "#22c55e" }}>
+                  <i className="bi bi-arrow-up me-1"></i>
+                  +12% so với ngày hôm qua
+                </div>
               </Card.Body>
             </Card>
           </Col>
-          <Col lg={3} md={6}>
-            <Card className="border-0 shadow-sm h-100">
-              <Card.Body className="text-center">
-                <div
-                  className="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
-                  style={{ width: "60px", height: "60px" }}
+
+          <Col lg={6} md={12}>
+            <Row className="g-3">
+              <Col md={6}>
+                <Card 
+                  className="border-0 h-100"
+                  style={{
+                    backgroundColor: "white",
+                    boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
+                    borderRadius: "12px",
+                  }}
                 >
-                  <i className="bi bi-clock fs-4 text-success"></i>
-                </div>
-                <h5 className="fw-bold text-success mb-1">
-                  {analytics.peakHours}
-                </h5>
-                <p className="text-muted mb-0">Giờ cao điểm</p>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col lg={3} md={6}>
-            <Card className="border-0 shadow-sm h-100">
-              <Card.Body className="text-center">
-                <div
-                  className="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
-                  style={{ width: "60px", height: "60px" }}
+                  <Card.Body className="p-4">
+                    <div style={{ fontSize: "13px", color: "#64748b", fontWeight: "600", marginBottom: "12px" }}>
+                      Giờ cao điểm
+                    </div>
+                    <div style={{ fontSize: "24px", fontWeight: "700", color: "#8b5cf6", marginBottom: "8px" }}>
+                      {analytics.peakHours}
+                    </div>
+                    <div style={{ fontSize: "12px", color: "#94a3b8" }}>
+                      <i className="bi bi-clock me-1"></i>
+                      Lưu lượng cao nhất
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+
+              <Col md={6}>
+                <Card 
+                  className="border-0 h-100"
+                  style={{
+                    backgroundColor: "white",
+                    boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
+                    borderRadius: "12px",
+                  }}
                 >
-                  <i className="bi bi-hourglass-split fs-4 text-info"></i>
-                </div>
-                <h5 className="fw-bold text-info mb-1">
-                  {analytics.avgSessionTime}
-                </h5>
-                <p className="text-muted mb-0">Thời gian TB</p>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col lg={3} md={6}>
-            <Card className="border-0 shadow-sm h-100">
-              <Card.Body className="text-center">
-                <div
-                  className="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
-                  style={{ width: "60px", height: "60px" }}
-                >
-                  <i className="bi bi-star-fill fs-4 text-warning"></i>
-                </div>
-                <h6 className="fw-bold text-warning mb-1">
-                  {analytics.popularTables.join(", ")}
-                </h6>
-                <p className="text-muted mb-0">Bàn phổ biến</p>
-              </Card.Body>
-            </Card>
+                  <Card.Body className="p-4">
+                    <div style={{ fontSize: "13px", color: "#64748b", fontWeight: "600", marginBottom: "12px" }}>
+                      Thời gian TB
+                    </div>
+                    <div style={{ fontSize: "24px", fontWeight: "700", color: "#ec4899", marginBottom: "8px" }}>
+                      {analytics.avgSessionTime}
+                    </div>
+                    <div style={{ fontSize: "12px", color: "#94a3b8" }}>
+                      <i className="bi bi-hourglass-split me-1"></i>
+                      Mỗi phiên làm việc
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           </Col>
         </Row>
 
         {/* Charts Row */}
-        <Row className="g-4 mb-4">
+        <Row className="g-4 mb-5">
           {/* Weekly Usage Chart */}
           <Col lg={8}>
-            <Card className="border-0 shadow-sm h-100">
-              <Card.Body>
-                <div className="d-flex align-items-center justify-content-between mb-4">
-                  <h5 className="mb-0 fw-semibold">
-                    <i className="bi bi-bar-chart text-primary me-2"></i>
+            <Card 
+              className="border-0 h-100"
+              style={{
+                backgroundColor: "white",
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
+                borderRadius: "12px",
+              }}
+            >
+              <Card.Body className="p-4">
+                <div className="d-flex align-items-center justify-content-between mb-5">
+                  <h5 
+                    className="mb-0 fw-bold"
+                    style={{ fontSize: "16px", color: "#1e293b" }}
+                  >
+                    <i className="bi bi-bar-chart" style={{ color: "#3b82f6", marginRight: "8px" }}></i>
                     Mức sử dụng theo tuần
                   </h5>
-                  <select className="form-select form-select-sm w-auto">
+                  <select 
+                    className="form-select form-select-sm w-auto"
+                    style={{ borderColor: "#e2e8f0", fontSize: "13px" }}
+                  >
                     <option>Tuần này</option>
                     <option>Tuần trước</option>
                     <option>4 tuần trước</option>
                   </select>
                 </div>
 
-                {/* Chart Placeholder */}
+                {/* Chart */}
                 <div className="chart-container" style={{ height: "300px" }}>
                   <div className="d-flex align-items-end justify-content-around h-100 pb-3">
                     {analytics.weeklyUsage.map((item, idx) => (
@@ -139,22 +203,33 @@ export default function AdminAnalytics() {
                         style={{ width: "12%" }}
                       >
                         <div
-                          className="bg-gradient rounded-top position-relative"
+                          className="rounded-top position-relative"
                           style={{
                             height: `${item.usage}%`,
-                            background: `linear-gradient(to top, #3b82f6, #60a5fa)`,
+                            background: `linear-gradient(to top, #3b82f6, #93c5fd)`,
                             marginBottom: "8px",
                             minHeight: "20px",
+                            boxShadow: "0 2px 4px rgba(59, 130, 246, 0.2)",
+                            transition: "all 0.2s",
+                            cursor: "pointer",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.boxShadow = "0 4px 8px rgba(59, 130, 246, 0.3)";
+                            e.currentTarget.style.transform = "translateY(-2px)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.boxShadow = "0 2px 4px rgba(59, 130, 246, 0.2)";
+                            e.currentTarget.style.transform = "none";
                           }}
                         >
                           <small
-                            className="position-absolute top-0 start-50 translate-middle-x text-white fw-medium"
-                            style={{ marginTop: "-20px" }}
+                            className="position-absolute top-0 start-50 translate-middle-x fw-semibold"
+                            style={{ marginTop: "-20px", color: "#3b82f6" }}
                           >
                             {item.usage}%
                           </small>
                         </div>
-                        <small className="text-muted fw-medium">
+                        <small style={{ color: "#64748b", fontWeight: "600" }}>
                           {item.day}
                         </small>
                       </div>
@@ -167,42 +242,57 @@ export default function AdminAnalytics() {
 
           {/* Hourly Usage */}
           <Col lg={4}>
-            <Card className="border-0 shadow-sm h-100">
-              <Card.Body>
-                <h5 className="mb-4 fw-semibold">
-                  <i className="bi bi-clock-history text-primary me-2"></i>
+            <Card 
+              className="border-0 h-100"
+              style={{
+                backgroundColor: "white",
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
+                borderRadius: "12px",
+              }}
+            >
+              <Card.Body className="p-4">
+                <h5 
+                  className="mb-4 fw-bold"
+                  style={{ fontSize: "16px", color: "#1e293b" }}
+                >
+                  <i className="bi bi-clock-history" style={{ color: "#3b82f6", marginRight: "8px" }}></i>
                   Sử dụng theo giờ
                 </h5>
 
                 <div className="hourly-usage">
                   {[
-                    { time: "08:00-10:00", rate: 45, color: "success" },
-                    { time: "10:00-12:00", rate: 70, color: "info" },
-                    { time: "12:00-14:00", rate: 85, color: "warning" },
-                    { time: "14:00-16:00", rate: 95, color: "danger" },
-                    { time: "16:00-18:00", rate: 80, color: "warning" },
-                    { time: "18:00-20:00", rate: 60, color: "info" },
-                    { time: "20:00-22:00", rate: 35, color: "success" },
+                    { time: "08:00-10:00", rate: 45, color: "#10b981" },
+                    { time: "10:00-12:00", rate: 70, color: "#3b82f6" },
+                    { time: "12:00-14:00", rate: 85, color: "#f59e0b" },
+                    { time: "14:00-16:00", rate: 95, color: "#ef4444" },
+                    { time: "16:00-18:00", rate: 80, color: "#f59e0b" },
+                    { time: "18:00-20:00", rate: 60, color: "#3b82f6" },
+                    { time: "20:00-22:00", rate: 35, color: "#10b981" },
                   ].map((slot, idx) => (
                     <div key={idx} className="d-flex align-items-center mb-3">
-                      <div
-                        className="flex-shrink-0 me-3"
-                        style={{ width: "90px" }}
-                      >
-                        <small className="text-muted fw-medium">
+                      <div style={{ width: "90px", flexShrink: 0 }}>
+                        <small style={{ color: "#64748b", fontWeight: "600", fontSize: "12px" }}>
                           {slot.time}
                         </small>
                       </div>
                       <div className="flex-grow-1 me-3">
-                        <div className="progress" style={{ height: "6px" }}>
+                        <div 
+                          className="progress"
+                          style={{ height: "6px", backgroundColor: "#e2e8f0", borderRadius: "3px" }}
+                        >
                           <div
-                            className={`progress-bar bg-${slot.color}`}
-                            style={{ width: `${slot.rate}%` }}
+                            style={{
+                              width: `${slot.rate}%`,
+                              backgroundColor: slot.color,
+                              height: "100%",
+                              borderRadius: "3px",
+                              transition: "width 0.3s ease",
+                            }}
                           ></div>
                         </div>
                       </div>
-                      <div className="flex-shrink-0" style={{ width: "40px" }}>
-                        <small className="fw-medium">{slot.rate}%</small>
+                      <div style={{ width: "40px", flexShrink: 0, textAlign: "right" }}>
+                        <small style={{ fontWeight: "600", color: "#1e293b" }}>{slot.rate}%</small>
                       </div>
                     </div>
                   ))}
@@ -215,10 +305,20 @@ export default function AdminAnalytics() {
         {/* Bottom Row - Table Performance */}
         <Row className="g-4">
           <Col lg={6}>
-            <Card className="border-0 shadow-sm">
-              <Card.Body>
-                <h5 className="mb-4 fw-semibold">
-                  <i className="bi bi-trophy text-primary me-2"></i>
+            <Card 
+              className="border-0 h-100"
+              style={{
+                backgroundColor: "white",
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
+                borderRadius: "12px",
+              }}
+            >
+              <Card.Body className="p-4">
+                <h5 
+                  className="mb-4 fw-bold"
+                  style={{ fontSize: "16px", color: "#1e293b" }}
+                >
+                  <i className="bi bi-trophy" style={{ color: "#f59e0b", marginRight: "8px" }}></i>
                   Top bàn được sử dụng
                 </h5>
 
@@ -257,25 +357,45 @@ export default function AdminAnalytics() {
                   ].map((table, idx) => (
                     <div
                       key={idx}
-                      className="d-flex align-items-center justify-content-between p-3 rounded-2 mb-2 bg-light"
+                      className="d-flex align-items-center justify-content-between p-4 rounded-lg mb-2"
+                      style={{
+                        backgroundColor: "#f8fafc",
+                        borderLeft: `3px solid ${["#3b82f6", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899"][idx]}`,
+                        transition: "all 0.2s",
+                        cursor: "pointer",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = "#f1f5f9";
+                        e.currentTarget.style.transform = "translateX(4px)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = "#f8fafc";
+                        e.currentTarget.style.transform = "none";
+                      }}
                     >
                       <div>
-                        <h6 className="mb-1 fw-semibold">{table.name}</h6>
-                        <small className="text-muted">
+                        <h6 className="mb-1 fw-semibold" style={{ color: "#1e293b" }}>
+                          {table.name}
+                        </h6>
+                        <small style={{ color: "#64748b", fontSize: "12px" }}>
                           {table.hours} • {table.revenue}
                         </small>
                       </div>
                       <div className="text-end">
-                        <div className="fw-bold text-primary">
+                        <div style={{ fontWeight: "700", color: "#3b82f6", marginBottom: "6px" }}>
                           {table.usage}%
                         </div>
                         <div
-                          className="progress mt-1"
-                          style={{ width: "60px", height: "4px" }}
+                          className="progress"
+                          style={{ width: "60px", height: "4px", borderRadius: "2px", backgroundColor: "#e2e8f0" }}
                         >
                           <div
-                            className="progress-bar bg-primary"
-                            style={{ width: `${table.usage}%` }}
+                            style={{
+                              width: `${table.usage}%`,
+                              backgroundColor: ["#3b82f6", "#10b981", "#f59e0b", "#8b5cf6", "#ec4899"][idx],
+                              height: "100%",
+                              borderRadius: "2px",
+                            }}
                           ></div>
                         </div>
                       </div>
@@ -287,18 +407,41 @@ export default function AdminAnalytics() {
           </Col>
 
           <Col lg={6}>
-            <Card className="border-0 shadow-sm">
-              <Card.Body>
-                <h5 className="mb-4 fw-semibold">
-                  <i className="bi bi-exclamation-triangle text-primary me-2"></i>
+            <Card 
+              className="border-0 h-100"
+              style={{
+                backgroundColor: "white",
+                boxShadow: "0 1px 3px rgba(0, 0, 0, 0.08)",
+                borderRadius: "12px",
+              }}
+            >
+              <Card.Body className="p-4">
+                <h5 
+                  className="mb-4 fw-bold"
+                  style={{ fontSize: "16px", color: "#1e293b" }}
+                >
+                  <i className="bi bi-exclamation-triangle" style={{ color: "#f59e0b", marginRight: "8px" }}></i>
                   Cần chú ý
                 </h5>
 
                 <div className="attention-items">
-                  <div className="d-flex align-items-start p-3 rounded-2 mb-3 border-start border-warning border-4 bg-warning bg-opacity-10">
-                    <i className="bi bi-exclamation-triangle text-warning me-3 mt-1"></i>
+                  <div 
+                    className="d-flex align-items-start p-4 rounded-lg mb-3"
+                    style={{
+                      borderLeft: "3px solid #f59e0b",
+                      backgroundColor: "#fffbeb",
+                    }}
+                  >
+                    <i 
+                      className="bi bi-exclamation-triangle me-3 mt-1"
+                      style={{
+                        fontSize: "18px",
+                        color: "#f59e0b",
+                        flexShrink: 0,
+                      }}
+                    ></i>
                     <div>
-                      <h6 className="mb-1 fw-semibold">
+                      <h6 className="mb-1 fw-semibold" style={{ color: "#1e293b" }}>
                         Bàn F2 - Sử dụng thấp
                       </h6>
                       <p className="text-muted mb-0 small">
@@ -307,20 +450,50 @@ export default function AdminAnalytics() {
                     </div>
                   </div>
 
-                  <div className="d-flex align-items-start p-3 rounded-2 mb-3 border-start border-info border-4 bg-info bg-opacity-10">
-                    <i className="bi bi-lightbulb text-info me-3 mt-1"></i>
+                  <div 
+                    className="d-flex align-items-start p-4 rounded-lg mb-3"
+                    style={{
+                      borderLeft: "3px solid #3b82f6",
+                      backgroundColor: "#eff6ff",
+                    }}
+                  >
+                    <i 
+                      className="bi bi-lightbulb me-3 mt-1"
+                      style={{
+                        fontSize: "18px",
+                        color: "#3b82f6",
+                        flexShrink: 0,
+                      }}
+                    ></i>
                     <div>
-                      <h6 className="mb-1 fw-semibold">Khuyến nghị</h6>
+                      <h6 className="mb-1 fw-semibold" style={{ color: "#1e293b" }}>
+                        Khuyến nghị
+                      </h6>
                       <p className="text-muted mb-0 small">
                         Thêm bàn nhóm (4-6 người) vào giờ cao điểm
                       </p>
                     </div>
                   </div>
 
-                  <div className="d-flex align-items-start p-3 rounded-2 mb-3 border-start border-success border-4 bg-success bg-opacity-10">
-                    <i className="bi bi-check-circle text-success me-3 mt-1"></i>
+                  <div 
+                    className="d-flex align-items-start p-4 rounded-lg"
+                    style={{
+                      borderLeft: "3px solid #10b981",
+                      backgroundColor: "#ecfdf5",
+                    }}
+                  >
+                    <i 
+                      className="bi bi-check-circle me-3 mt-1"
+                      style={{
+                        fontSize: "18px",
+                        color: "#10b981",
+                        flexShrink: 0,
+                      }}
+                    ></i>
                     <div>
-                      <h6 className="mb-1 fw-semibold">Hiệu suất tốt</h6>
+                      <h6 className="mb-1 fw-semibold" style={{ color: "#1e293b" }}>
+                        Hiệu suất tốt
+                      </h6>
                       <p className="text-muted mb-0 small">
                         Khu vực A đạt 90% công suất sử dụng
                       </p>
@@ -328,9 +501,18 @@ export default function AdminAnalytics() {
                   </div>
                 </div>
 
-                <div className="text-center mt-4">
-                  <Button variant="outline-primary" size="sm">
-                    <i className="bi bi-download me-1"></i>
+                <div className="text-center mt-5">
+                  <Button 
+                    style={{
+                      backgroundColor: "#3b82f6",
+                      border: "none",
+                      borderRadius: "8px",
+                      fontSize: "13px",
+                      fontWeight: "600",
+                      padding: "10px 20px",
+                    }}
+                  >
+                    <i className="bi bi-download me-2"></i>
                     Xuất báo cáo chi tiết
                   </Button>
                 </div>

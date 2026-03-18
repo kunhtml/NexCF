@@ -166,27 +166,58 @@ export default function AdminSidebar({ user, onLogout }) {
   const menuSections = isAdmin ? adminMenuSections : staffMenuSections;
 
   return (
-    <div className="admin-sidebar d-flex flex-column">
+    <div 
+      className="admin-sidebar d-flex flex-column"
+      style={{
+        width: "280px",
+        backgroundColor: "#1e293b",
+        color: "white",
+        transition: "box-shadow 0.3s ease",
+        boxShadow: "2px 0 8px rgba(0, 0, 0, 0.12)",
+      }}
+    >
       {/* Logo */}
-      <div className="sidebar-header px-3 py-4">
+      <div className="sidebar-header px-4 py-5">
         <Link to="/" className="d-flex align-items-center text-decoration-none">
-          <div className="logo-icon me-2">
-            <i className="bi bi-cup-hot-fill text-warning fs-4"></i>
+          <div 
+            className="logo-icon me-3 d-flex align-items-center justify-content-center rounded-lg"
+            style={{
+              width: "48px",
+              height: "48px",
+              backgroundColor: "#fbbf24",
+              transition: "transform 0.2s",
+            }}
+          >
+            <i className="bi bi-cup-hot-fill text-dark" style={{ fontSize: "24px" }}></i>
           </div>
           <div>
-            <div className="text-white fw-bold">StudySpace</div>
-            <small className="text-muted-light">
-              {isAdmin ? "CSMS • Admin Panel" : "CSMS • Staff Panel"}
+            <div 
+              className="fw-bold lh-1"
+              style={{ fontSize: "16px", color: "white" }}
+            >
+              StudySpace
+            </div>
+            <small style={{ color: "#94a3b8", fontSize: "11px" }}>
+              {isAdmin ? "Admin Panel" : "Staff Panel"}
             </small>
           </div>
         </Link>
       </div>
 
       {/* Navigation */}
-      <Nav className="flex-column flex-grow-1 px-2 py-3 sidebar-nav">
+      <Nav className="flex-column flex-grow-1 px-2 py-2 sidebar-nav">
         {menuSections.map((section, idx) => (
-          <div key={idx} className="mb-3">
-            <div className="sidebar-section-title px-3 mb-2">
+          <div key={idx} className="mb-4">
+            <div 
+              className="sidebar-section-title px-4 mb-3"
+              style={{
+                fontSize: "11px",
+                fontWeight: "700",
+                letterSpacing: "0.5px",
+                color: "#64748b",
+                textTransform: "uppercase",
+              }}
+            >
               {section.title}
             </div>
             {section.items.map((item) => (
@@ -194,14 +225,44 @@ export default function AdminSidebar({ user, onLogout }) {
                 key={item.path}
                 as={Link}
                 to={item.path}
-                className={`sidebar-item d-flex align-items-center px-3 py-2 rounded-2 mb-1 ${
-                  isActive(item.path) ? "active" : ""
-                }`}
+                className={`sidebar-item d-flex align-items-center px-4 py-3 rounded-lg mb-1`}
+                style={{
+                  color: isActive(item.path) ? "#fbbf24" : "#cbd5e1",
+                  backgroundColor: isActive(item.path) ? "rgba(251, 191, 36, 0.1)" : "transparent",
+                  transition: "all 0.2s ease",
+                  borderLeft: isActive(item.path) ? "3px solid #fbbf24" : "3px solid transparent",
+                  cursor: "pointer",
+                  textDecoration: "none",
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive(item.path)) {
+                    e.currentTarget.style.backgroundColor = "rgba(203, 213, 225, 0.08)";
+                    e.currentTarget.style.color = "#f1f5f9";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive(item.path)) {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.color = "#cbd5e1";
+                  }
+                }}
               >
-                <i className={`bi ${item.icon} me-3`}></i>
-                <span className="flex-grow-1">{item.label}</span>
+                <i 
+                  className={`bi ${item.icon}`}
+                  style={{ 
+                    marginRight: "12px", 
+                    fontSize: "16px",
+                    color: isActive(item.path) ? "#fbbf24" : "inherit",
+                  }}
+                ></i>
+                <span className="flex-grow-1" style={{ fontSize: "14px" }}>{item.label}</span>
                 {item.badge && (
-                  <Badge bg="danger" pill className="ms-2">
+                  <Badge 
+                    bg="danger" 
+                    pill 
+                    className="ms-2"
+                    style={{ fontSize: "11px", padding: "2px 8px" }}
+                  >
                     {item.badge}
                   </Badge>
                 )}
@@ -211,37 +272,69 @@ export default function AdminSidebar({ user, onLogout }) {
         ))}
 
         {/* Logout */}
-        <div className="mt-auto px-2 mb-3">
+        <div className="mt-auto px-2 mb-4">
           <Nav.Link
             onClick={onLogout}
-            className="sidebar-item d-flex align-items-center px-3 py-2 rounded-2 text-danger-light"
-            style={{ cursor: "pointer" }}
+            className="sidebar-item d-flex align-items-center px-4 py-3 rounded-lg"
+            style={{
+              color: "#cbd5e1",
+              backgroundColor: "transparent",
+              transition: "all 0.2s ease",
+              cursor: "pointer",
+              textDecoration: "none",
+              borderLeft: "3px solid transparent",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "rgba(239, 68, 68, 0.1)";
+              e.currentTarget.style.color = "#fca5a5";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.color = "#cbd5e1";
+            }}
           >
-            <i className="bi bi-box-arrow-right me-3"></i>
-            <span>Đăng xuất</span>
+            <i className="bi bi-box-arrow-right" style={{ marginRight: "12px", fontSize: "16px" }}></i>
+            <span style={{ fontSize: "14px" }}>Đăng xuất</span>
           </Nav.Link>
         </div>
       </Nav>
 
       {/* User Profile */}
-      <div className="sidebar-footer px-3 py-3 border-top border-secondary">
+      <div 
+        className="sidebar-footer px-4 py-4 border-top"
+        style={{
+          borderTopColor: "#334155",
+        }}
+      >
         <div className="d-flex align-items-center">
-          <div className="user-avatar me-3">
-            <div className="avatar-circle bg-primary text-white d-flex align-items-center justify-content-center rounded-circle fw-bold">
-              {(user?.fullName || "NV")
-                .split(" ")
-                .slice(-2)
-                .map((part) => part[0])
-                .join("")
-                .toUpperCase()}
-            </div>
+          <div 
+            className="rounded-circle d-flex align-items-center justify-content-center fw-bold"
+            style={{
+              width: "40px",
+              height: "40px",
+              backgroundColor: "#fbbf24",
+              color: "#1e293b",
+              marginRight: "12px",
+              fontSize: "14px",
+              flexShrink: 0,
+            }}
+          >
+            {(user?.fullName || "NV")
+              .split(" ")
+              .slice(-2)
+              .map((part) => part[0])
+              .join("")
+              .toUpperCase()}
           </div>
           <div className="flex-grow-1 overflow-hidden">
-            <div className="text-white fw-medium text-truncate">
+            <div 
+              className="fw-600 text-truncate"
+              style={{ fontSize: "14px", color: "white" }}
+            >
               {user?.fullName || (isAdmin ? "Admin Master" : "Nhân viên")}
             </div>
-            <small className="text-muted-light">
-              {isAdmin ? "Quản trị viên" : "Nhân viên quầy"}
+            <small style={{ color: "#64748b", fontSize: "12px" }}>
+              {isAdmin ? "Quản trị viên" : "Nhân viên"}
             </small>
           </div>
         </div>

@@ -3,10 +3,7 @@ import { Link, useLocation } from "react-router";
 
 export default function AdminSidebar({ user, onLogout }) {
   const location = useLocation();
-  const dashboardPath =
-    user?.role === "Admin" ? "/admin-dashboard" : "/staff-dashboard";
-  const dashboardPrefix =
-    user?.role === "Admin" ? "/admin-dashboard" : "/staff-dashboard";
+  const isAdmin = user?.role === "Admin";
 
   const isActive = (path) => {
     if (path === "/staff-dashboard" || path === "/admin-dashboard") {
@@ -35,16 +32,79 @@ export default function AdminSidebar({ user, onLogout }) {
     return false;
   };
 
-  const menuSections = [
+  const adminMenuSections = [
     {
       title: "TỔNG QUAN",
-      items: [{ path: dashboardPath, icon: "bi-grid", label: "Dashboard" }],
+      items: [{ path: "/admin-dashboard", icon: "bi-grid", label: "Dashboard" }],
+    },
+    {
+      title: "QUẢN LÝ NGƯỜI DÙNG",
+      items: [
+        {
+          path: "/admin-dashboard/users",
+          icon: "bi-people-fill",
+          label: "Quản lý Users",
+          badge: 12,
+        },
+      ],
+    },
+    {
+      title: "DỮ LIỆU HỆ THỐNG",
+      items: [
+        {
+          path: "/admin-dashboard/services",
+          icon: "bi-book",
+          label: "Quản lý Dịch vụ",
+        },
+        {
+          path: "/admin-dashboard/spaces",
+          icon: "bi-building",
+          label: "Quản lý Không gian",
+        },
+      ],
+    },
+    {
+      title: "BÁO CÁO & THỐNG KÊ",
+      items: [
+        {
+          path: "/admin-dashboard/revenue",
+          icon: "bi-graph-up-arrow",
+          label: "Báo cáo Doanh thu",
+        },
+        {
+          path: "/admin-dashboard/analytics",
+          icon: "bi-bar-chart",
+          label: "Công suất & Sử dụng",
+        },
+      ],
+    },
+    {
+      title: "TÀI KHOẢN",
+      items: [
+        {
+          path: "/admin-dashboard/profile",
+          icon: "bi-person-circle",
+          label: "Hồ sơ cá nhân",
+        },
+        {
+          path: "/admin-dashboard/password",
+          icon: "bi-key-fill",
+          label: "Đổi mật khẩu",
+        },
+      ],
+    },
+  ];
+
+  const staffMenuSections = [
+    {
+      title: "TỔNG QUAN",
+      items: [{ path: "/staff-dashboard", icon: "bi-grid", label: "Dashboard" }],
     },
     {
       title: "CHECK-IN / CHECK-OUT",
       items: [
         {
-          path: `${dashboardPrefix}/checkin`,
+          path: "/staff-dashboard/checkin",
           icon: "bi-clipboard-check",
           label: "Check-in đơn",
           badge: 3,
@@ -55,7 +115,7 @@ export default function AdminSidebar({ user, onLogout }) {
       title: "QUẢN LÝ KHÔNG GIAN",
       items: [
         {
-          path: `${dashboardPrefix}/tables`,
+          path: "/staff-dashboard/tables",
           icon: "bi-map",
           label: "Sơ đồ chỗ ngồi",
         },
@@ -65,18 +125,18 @@ export default function AdminSidebar({ user, onLogout }) {
       title: "ĐƠN HÀNG & DỊCH VỤ",
       items: [
         {
-          path: `${dashboardPrefix}/orders`,
+          path: "/staff-dashboard/orders",
           icon: "bi-receipt",
           label: "Quản lý đơn hàng",
           badge: 5,
         },
         {
-          path: `${dashboardPrefix}/create-service`,
+          path: "/staff-dashboard/create-service",
           icon: "bi-plus-circle",
           label: "Tạo đơn dịch vụ",
         },
         {
-          path: `${dashboardPrefix}/services`,
+          path: "/staff-dashboard/services",
           icon: "bi-book",
           label: "Danh sách dịch vụ",
         },
@@ -86,18 +146,20 @@ export default function AdminSidebar({ user, onLogout }) {
       title: "TÀI KHOẢN",
       items: [
         {
-          path: `${dashboardPrefix}/profile`,
+          path: "/staff-dashboard/profile",
           icon: "bi-person-circle",
           label: "Hồ sơ cá nhân",
         },
         {
-          path: `${dashboardPrefix}/password`,
+          path: "/staff-dashboard/password",
           icon: "bi-key-fill",
           label: "Đổi mật khẩu",
         },
       ],
     },
   ];
+
+  const menuSections = isAdmin ? adminMenuSections : staffMenuSections;
 
   return (
     <div className="admin-sidebar d-flex flex-column">
@@ -109,7 +171,9 @@ export default function AdminSidebar({ user, onLogout }) {
           </div>
           <div>
             <div className="text-white fw-bold">StudySpace</div>
-            <small className="text-muted-light">CSMS • Staff Panel</small>
+            <small className="text-muted-light">
+              {isAdmin ? "CSMS • Admin Panel" : "CSMS • Staff Panel"}
+            </small>
           </div>
         </Link>
       </div>
@@ -170,10 +234,10 @@ export default function AdminSidebar({ user, onLogout }) {
           </div>
           <div className="flex-grow-1 overflow-hidden">
             <div className="text-white fw-medium text-truncate">
-              {user?.fullName || "Nhân viên"}
+              {user?.fullName || (isAdmin ? "Admin Master" : "Nhân viên")}
             </div>
             <small className="text-muted-light">
-              {user?.role === "Admin" ? "Quản trị viên" : "Nhân viên quầy"}
+              {isAdmin ? "Quản trị viên" : "Nhân viên quầy"}
             </small>
           </div>
         </div>

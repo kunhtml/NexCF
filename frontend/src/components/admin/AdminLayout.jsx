@@ -1,10 +1,29 @@
-import { useNavigate } from "react-router";
+import { Navigate, useLocation, useNavigate } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
 import AdminSidebar from "./AdminSidebar";
 
 export default function AdminLayout({ children }) {
-  const { user, logout } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const getDefaultDashboardByRole = (role) => {
+    if (role === "Admin") return "/admin-dashboard";
+    if (role === "Staff") return "/staff-dashboard";
+    return "/customer-dashboard";
+  };
+
+  if (!isAuthenticated || !user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (location.pathname.startsWith("/admin-dashboard") && user.role !== "Admin") {
+    return <Navigate to={getDefaultDashboardByRole(user.role)} replace />;
+  }
+
+  if (location.pathname.startsWith("/staff-dashboard") && user.role !== "Staff") {
+    return <Navigate to={getDefaultDashboardByRole(user.role)} replace />;
+  }
 
   const handleLogout = () => {
     logout();
